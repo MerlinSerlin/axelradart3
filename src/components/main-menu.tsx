@@ -15,7 +15,7 @@ import { MenuIcon } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export default function MainMenu() {
-    const isDesktop = useMediaQuery("(min-width: 768px)");
+    const isDesktop = useMediaQuery("(min-width: 768px)", {initializeWithValue: false});
     
     return isDesktop ? 
     <div>Desktop</div> 
