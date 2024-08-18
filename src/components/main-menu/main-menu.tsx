@@ -25,7 +25,9 @@ export default function MainMenu() {
     <div>
         <Drawer direction="left">
             <DrawerTrigger asChild>
-                <MenuIcon className="fixed top-3 left-3"/>
+                <Button className="fixed top-3 left-3 rounded-full border-2 border-white	bg-slate-600 w-14 h-14 flex items-center justify-center" >
+                    <MenuIcon color="white"/>
+                </Button>
             </DrawerTrigger>
             <DrawerContent direction="left">
                 <DrawerHeader className="flex flex-row justify-between items-center space-y-0">

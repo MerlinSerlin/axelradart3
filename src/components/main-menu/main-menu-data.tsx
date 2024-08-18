@@ -1,10 +1,6 @@
 export const MainMenuData = {
     items: [
         {
-            title: "Home",
-            href: "/",
-        },
-        {
             title: "About",
             href: "/about",
         },
