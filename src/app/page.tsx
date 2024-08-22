@@ -1,29 +1,25 @@
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import MainMenu from "@/components/main-menu/main-menu";
-import HomePageHero from "@/components/hero/homepage-hero";
+import CardWithImage from "@/components/ui/card-with-image";
+import { getThemeImages } from "@/data/art-data";
 
 
 
-export default function Home() {
+export default function Home() { 
+  const themeImages = getThemeImages();
 
   return (
     <div className="w-full h-lvh">
-      <div className="relative h-1/2 rounded-lg overflow-hidden">
-      <Button className="absolute z-10 bottom-3 right-3 bg-slate-600 border-2 border-white">
-          <h1 className="text-white text-2xl font-bold">Fabric Art</h1>
-        </Button>
-        <HomePageHero imageURL='/other-images/Merle_Working.jpeg'/>
-      </div>
-      <div className="relative h-1/2 rounded-lg overflow-hidden">
-        <Button className="absolute z-10 bottom-3 right-3 bg-slate-600 border-2 border-white">
-          <h1 className="text-white text-2xl font-bold">Collections</h1>
-        </Button>
-        <HomePageHero imageURL='/art-images/Mount_Everest_600w.jpg'/>
-      </div>
-      <div className="absolute z-20">
-        <MainMenu />
-      </div>
+      {themeImages.map((themeImage, index) => (
+        <div key={index} className="relative flex flex-col items-center">
+          <CardWithImage  
+            src={`/art-images${themeImage.pathName}`}
+            title={themeImage.title}
+            description={themeImage.description}
+            dimensions={themeImage.size}
+          />
+        </div>
+      ))}
     </div>
   );
 }

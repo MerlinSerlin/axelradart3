@@ -14,7 +14,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { MenuIcon, X } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { MainMenuData } from "./main-menu-data";
+import { MainMenuData } from "../../data/main-menu-data";
 
 export default function MainMenu() {
     const isDesktop = useMediaQuery("(min-width: 640px)", {initializeWithValue: false});
