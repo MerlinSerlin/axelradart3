@@ -1,12 +1,9 @@
 'use client'
 
-import { useEffect } from "react";
 import CardWithImage from "@/components/ui/card-with-image";
-import { Card, CardFooter } from "@/components/ui/card";
+import { CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useParams, usePathname } from 'next/navigation'
-import Link from "next/link";
-import { useCollectionStore } from "@/store/collection";
 import { getCollection } from "@/data/art-data";
 
 export default function Page() {
@@ -26,9 +23,7 @@ export default function Page() {
           />
           <CardFooter className="pt-6 w-11/12 rounded-lg border bg-card text-card-foreground shadow-sm">
             <Button className="w-full">
-              {/* <Link href={`/collections/${image.theme}`}>
               View Full Image
-              </Link> */}
             </Button>
           </CardFooter>
         </div>

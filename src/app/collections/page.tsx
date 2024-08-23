@@ -6,16 +6,8 @@ import { getThemeImages } from "@/data/art-data";
 import { CardFooter } from "@/components/ui/card";
 import Link from "next/link";
 
-import { useCollectionStore } from "@/store/collection";
-import { useParams } from "next/navigation";
-
 export default function Page() { 
-    const themeImages = getThemeImages();
-    // const {setCurrentCollection} = useCollectionStore();
-
-    // const setCurrentCollectionHandler = (collectionID:string) => {
-    //     setCurrentCollection(collectionID);
-    // };
+  const themeImages = getThemeImages();
 
   return (
     <div className="w-full h-lvh">
