@@ -9,11 +9,7 @@ import Link from "next/link";
 import { useCollectionStore } from "@/store/collection";
 import { getCollection } from "@/data/art-data";
 
-export interface CollectionPageProps {
-    collection: string;
-}
-
-export default function Page(props: CollectionPageProps) {
+export default function Page() {
 
   const currentCollectionTitle = useCollectionStore((state) => state.currentCollection);
   const collectionImages = getCollection(currentCollectionTitle);
