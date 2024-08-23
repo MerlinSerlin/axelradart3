@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { MenuIcon, X } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { MainMenuData } from "../../data/main-menu-data";
+import Link from "next/link";
 
 export default function MainMenu() {
     const isDesktop = useMediaQuery("(min-width: 640px)", {initializeWithValue: false});
@@ -25,7 +26,7 @@ export default function MainMenu() {
     <div>
         <Drawer direction="left">
             <DrawerTrigger asChild>
-                <Button className="fixed top-3 left-3 rounded-full border-2 border-white	bg-slate-600 w-14 h-14 flex items-center justify-center" >
+                <Button className="fixed top-4 left-4 rounded-full border-2 border-white bg-slate-600 w-14 h-14 flex items-center justify-center z-20" >
                     <MenuIcon color="white"/>
                 </Button>
             </DrawerTrigger>
@@ -43,7 +44,9 @@ export default function MainMenu() {
                 </DrawerHeader>
                 <span className="flex flex-col fixed top-9 left-3">
                     {MainMenuData.items.map((item, index) => (
-                        <span key={index}>{item.title}</span>
+                        <Link href={item.href} key={index}>
+                            {item.title}
+                        </Link>
                     ))}
                 </span>
             </DrawerContent>

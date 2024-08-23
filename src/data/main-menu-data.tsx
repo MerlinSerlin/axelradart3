@@ -1,12 +1,12 @@
 export const MainMenuData = {
     items: [
         {
-            title: "About",
-            href: "/about",
+            title: "Fabric Art",
+            href: "/fabric-art",
         },
         {
-            title: "Press",
-            href: "/press",
+            title: "Collections",
+            href: "/collections",
         },
         {
             title: "Installed Art",
@@ -15,6 +15,10 @@ export const MainMenuData = {
         {
             title: "Prices",
             href: "/prices",
+        },
+        {
+            title: "Press",
+            href: "/press",
         },
         {
             title: "Contact",

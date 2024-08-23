@@ -14,7 +14,6 @@ import {
 export interface CardWithImageProps {
     src: string,
     title: string,
-    alt?: string,
     dimensions?: string,
     description?: string,
 }
@@ -22,9 +21,11 @@ export interface CardWithImageProps {
 
 type CardProps = React.ComponentProps<typeof Card>
 
-export default function CardWithImage({ className, ...props }: CardWithImageProps & CardProps) {
+type ButtonProps = React.ComponentProps<typeof Button>
+
+export default function CardWithImage({ className, ...props }: CardWithImageProps & CardProps & ButtonProps) {
   return (
-    <Card className={cn("w-11/12 mt-12", className)} {...props}>
+    <Card className={cn("w-11/12", className)} {...props}>
       <CardHeader>
       <CardTitle>{props.title}</CardTitle>
       <CardDescription>{props.dimensions}</CardDescription>
@@ -35,16 +36,16 @@ export default function CardWithImage({ className, ...props }: CardWithImageProp
           <Image 
               src={props.src}
               fill
-              alt="Mount Everest"
+              alt={props.description!}
               style={{objectFit: 'cover', borderRadius: '0.375rem'}}   
           />
         </div>
       </CardContent>
-      <CardFooter className="pt-6">
+      {/* <CardFooter className="pt-6">
         <Button className="w-full">
-            View Full Image
+          {props.buttonText}
         </Button>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   )
 }

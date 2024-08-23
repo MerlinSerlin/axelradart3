@@ -2222,3 +2222,7 @@ export const artData = {
 export const getThemeImages = () => {
   return artData.items.filter(item => item.isThemeImage);
 }
+
+export const getCollection = (collectionName: string) => {
+  return artData.items.filter(item => item.theme === collectionName);
+}
