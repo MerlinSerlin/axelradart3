@@ -26,9 +26,9 @@ export default function Page() {
           />
           <CardFooter className="pt-6 w-11/12 rounded-lg border bg-card text-card-foreground shadow-sm">
             <Button className="w-full">
-              <Link href={`/collections/${image.theme}`}>
+              {/* <Link href={`/collections/${image.theme}`}>
               View Full Image
-              </Link>
+              </Link> */}
             </Button>
           </CardFooter>
         </div>

@@ -34,7 +34,7 @@ export default function Page() {
           <CardFooter className="pt-6 w-11/12 rounded-lg border bg-card text-card-foreground shadow-sm">
             <Button className="w-full" onClick={() => setCurrentCollectionHandler(image.theme)}>
               <Link href={`/collections/${image.theme}`}>
-              View Collection
+                View Collection
               </Link>
             </Button>
           </CardFooter>
