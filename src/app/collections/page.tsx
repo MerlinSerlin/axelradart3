@@ -7,19 +7,15 @@ import { CardFooter } from "@/components/ui/card";
 import Link from "next/link";
 
 import { useCollectionStore } from "@/store/collection";
+import { useParams } from "next/navigation";
 
 export default function Page() { 
     const themeImages = getThemeImages();
-    const {setCurrentCollection} = useCollectionStore();
+    // const {setCurrentCollection} = useCollectionStore();
 
-    const setCurrentCollectionHandler = (collectionID:string) => {
-        setCurrentCollection(collectionID);
-    };
-
-//   function updateCollection (collectionId: string): void { 
-//     useCollectionStore((state) => state.setCurrentCollection(collectionId))
-//   };
-
+    // const setCurrentCollectionHandler = (collectionID:string) => {
+    //     setCurrentCollection(collectionID);
+    // };
 
   return (
     <div className="w-full h-lvh">
@@ -32,7 +28,7 @@ export default function Page() {
             dimensions={image.size}
           />
           <CardFooter className="pt-6 w-11/12 rounded-lg border bg-card text-card-foreground shadow-sm">
-            <Button className="w-full" onClick={() => setCurrentCollectionHandler(image.theme)}>
+            <Button className="w-full">
               <Link href={`/collections/${image.theme}`}>
                 View Collection
               </Link>

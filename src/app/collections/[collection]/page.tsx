@@ -11,8 +11,8 @@ import { getCollection } from "@/data/art-data";
 
 export default function Page() {
 
-  const currentCollectionTitle = useCollectionStore((state) => state.currentCollection);
-  const collectionImages = getCollection(currentCollectionTitle);
+  const { collection } = useParams();
+  const collectionImages = getCollection(collection.toString());
 
   return (
     <div className="w-full h-lvh">
