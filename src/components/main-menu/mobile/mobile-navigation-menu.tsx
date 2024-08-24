@@ -23,10 +23,10 @@ export function MobileNavigationMenu() {
   const [showMenu, setShowMenu] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isDrawerOpen, setDrawerIsOpen] = useState(false);
 
   const toggleOpen = () => {
-    setIsOpen(!isOpen);
+    setDrawerIsOpen(!isDrawerOpen);
   };
 
 
@@ -52,10 +52,13 @@ export function MobileNavigationMenu() {
                 </DrawerHeader>
                 <div className="fixed max-w-80 w-screen flex flex-col" onClick={() => toggleOpen()}>
                     <h2 className="rounded-md border text-xl pl-3 p-3">
-                        <MobileDrawer isOpen={isOpen}/>
+                        <MobileDrawer 
+                        isOpen={isDrawerOpen}
+                        toggleOpen={() => toggleOpen}
+                        />
                     </h2>
                     {MainMenuData.items.map((item, index) => (
-                        <h2 className="rounded-md border text-xl pl-3 p-3">
+                        <h2 key={index} className="rounded-md border text-xl pl-3 p-3">
                             <Link href={item.href} key={index} onClick={() => setShowMenu(false)}>
                                 {item.title}
                             </Link>

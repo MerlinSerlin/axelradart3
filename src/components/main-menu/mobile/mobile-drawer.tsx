@@ -77,18 +77,11 @@ export function MobileDrawer(props: MobileDrawerProps) {
       <DrawerTrigger className="w-full">
         <div className="w-full flex justify-between">
             <span>Open Drawer</span>
-            {/* <NavigationMenu>
-                <NavigationMenuItem>
-                    <NavigationMenuTrigger> */}
-                        <div>
-                            <ChevronToggle 
-                            isOpen={props.isOpen}
-                            />
-                        </div>
-                    {/* </NavigationMenuTrigger>
-                </NavigationMenuItem>
-            </NavigationMenu> */}
-            
+                <div>
+                    <ChevronToggle 
+                    isOpen={props.isOpen}
+                    />
+                </div>
         </div>
       </DrawerTrigger>
       <DrawerContent className="h-4/5">
