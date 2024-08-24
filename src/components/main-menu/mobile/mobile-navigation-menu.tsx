@@ -2,6 +2,7 @@
 
 import {
     Drawer,
+    DrawerClose,   
     DrawerContent,
     DrawerDescription,
     DrawerHeader,
@@ -55,11 +56,13 @@ export function MobileNavigationMenu() {
                         <MobileDrawer />
                     </h2>
                     {MainMenuData.items.map((item, index) => (
-                        <h2 key={index} className="rounded-md border text-xl pl-3 p-3">
-                            <Link href={item.href} key={index} onClick={toggleMenu}>
-                                {item.title}
-                            </Link>
-                        </h2>
+                        <DrawerClose key={index} asChild>
+                            <h2 className="rounded-md border text-xl pl-3 p-3">
+                                <Link href={item.href} key={index} onClick={toggleMenu}>
+                                    {item.title}
+                                </Link>
+                            </h2>
+                        </DrawerClose>
                     ))}
                 </div>
             </DrawerContent>

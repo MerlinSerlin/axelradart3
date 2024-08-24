@@ -65,7 +65,6 @@ const data = [
 export function MobileDrawer() {
   const closeDrawer = useMobileMenuStore((state) => state.closeDrawer)
 
-
   return (
     <Drawer onClose={closeDrawer}>
       <DrawerTrigger className="w-full">
