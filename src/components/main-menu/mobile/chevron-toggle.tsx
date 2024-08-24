@@ -1,16 +1,13 @@
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useMobileMenuStore } from "@/store/mobile-menu";
 
-export interface ChevronToggleProps {
-  isOpen: boolean;
-}
-
-const ChevronToggle = (props: ChevronToggleProps) => {
+const ChevronToggle = () => {
+  const isDrawerOpen = useMobileMenuStore((state) => state.isDrawerOpen)
 
   return (
       <ChevronDown
         className={`transition-transform duration-300 ${
-          props.isOpen ? "rotate-180" : "rotate-0"
+          isDrawerOpen ? "rotate-180" : "rotate-0"
         }`}
       />
   );

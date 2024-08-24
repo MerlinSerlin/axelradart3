@@ -18,10 +18,7 @@ import {
 
 import ChevronToggle from "./chevron-toggle"
 
-export interface MobileDrawerProps {
-    isOpen: boolean
-    toggleOpen: () => void
-}
+import { useMobileMenuStore } from "@/store/mobile-menu"
 
 const data = [
   {
@@ -65,23 +62,18 @@ const data = [
   },
 ]
 
-export function MobileDrawer(props: MobileDrawerProps) {
-  const [goal, setGoal] = React.useState(350)
+export function MobileDrawer() {
+  const closeDrawer = useMobileMenuStore((state) => state.closeDrawer)
 
-  function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)))
-  }
 
   return (
-    <Drawer>
+    <Drawer onClose={closeDrawer}>
       <DrawerTrigger className="w-full">
         <div className="w-full flex justify-between">
-            <span>Open Drawer</span>
-                <div>
-                    <ChevronToggle 
-                    isOpen={props.isOpen}
-                    />
-                </div>
+          <span>Open Drawer</span>
+          <div>
+            <ChevronToggle />
+          </div>
         </div>
       </DrawerTrigger>
       <DrawerContent className="h-4/5">
@@ -96,15 +88,15 @@ export function MobileDrawer(props: MobileDrawerProps) {
                 variant="outline"
                 size="icon"
                 className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(-10)}
-                disabled={goal <= 200}
+                // onClick={() => onClick(-10)}
+                // disabled={goal <= 200}
               >
                 <Minus className="h-4 w-4" />
                 <span className="sr-only">Decrease</span>
               </Button>
               <div className="flex-1 text-center">
                 <div className="text-7xl font-bold tracking-tighter">
-                  {goal}
+                  250
                 </div>
                 <div className="text-[0.70rem] uppercase text-muted-foreground">
                   Calories/day
@@ -114,27 +106,15 @@ export function MobileDrawer(props: MobileDrawerProps) {
                 variant="outline"
                 size="icon"
                 className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(10)}
-                disabled={goal >= 400}
+                // onClick={() => onClick(10)}
+                // disabled={goal >= 400}
               >
                 <Plus className="h-4 w-4" />
                 <span className="sr-only">Increase</span>
               </Button>
             </div>
             <div className="mt-3 h-[120px]">
-              {/* <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={data}>
-                  <Bar
-                    dataKey="goal"
-                    style={
-                      {
-                        fill: "hsl(var(--foreground))",
-                        opacity: 0.9,
-                      } as React.CSSProperties
-                    }
-                  />
-                </BarChart>
-              </ResponsiveContainer> */}
+              
             </div>
           </div>
           <DrawerFooter>
