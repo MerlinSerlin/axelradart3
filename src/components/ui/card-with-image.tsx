@@ -41,11 +41,6 @@ export default function CardWithImage({ className, ...props }: CardWithImageProp
           />
         </div>
       </CardContent>
-      {/* <CardFooter className="pt-6">
-        <Button className="w-full">
-          {props.buttonText}
-        </Button>
-      </CardFooter> */}
     </Card>
   )
 }

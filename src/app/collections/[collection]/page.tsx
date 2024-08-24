@@ -5,6 +5,7 @@ import { CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useParams, usePathname } from 'next/navigation'
 import { getCollection } from "@/data/art-data";
+import Link from "next/link";
 
 export default function Page() {
 
@@ -22,9 +23,11 @@ export default function Page() {
             dimensions={image.size}
           />
           <CardFooter className="pt-6 w-11/12 rounded-lg border bg-card text-card-foreground shadow-sm">
-            <Button className="w-full">
-              View Full Image
-            </Button>
+            <Link href={`/collections/${image.theme}`} className="w-full">
+                <Button className="w-full">
+                View Full Image
+                </Button>
+            </Link>
           </CardFooter>
         </div>
       ))}
