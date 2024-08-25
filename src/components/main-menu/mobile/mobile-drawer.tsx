@@ -62,16 +62,20 @@ const data = [
   },
 ]
 
-export function MobileDrawer() {
-  const closeDrawer = useMobileMenuStore((state) => state.closeDrawer)
-
+export function MobileDrawer() { 
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  
+  // setIsDrawerOpen is passed directly to onOpenChange, 
+  // meaning whenever the drawer opens or closes, 
+  // setIsDrawerOpen is called with the new state (either true or false).
+    
   return (
-    <Drawer onClose={closeDrawer}>
+    <Drawer onOpenChange={setIsDrawerOpen}>
       <DrawerTrigger className="w-full">
         <div className="w-full flex justify-between">
           <span>Open Drawer</span>
           <div>
-            <ChevronToggle />
+            <ChevronToggle isDrawerOpen={isDrawerOpen} />
           </div>
         </div>
       </DrawerTrigger>
