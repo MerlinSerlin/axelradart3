@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import {
     Drawer,
@@ -21,12 +21,14 @@ import { DesktopNavigationMenu } from "./desktop-navigation-menu";
 import { MobileNavigationMenu } from "./mobile/mobile-navigation-menu";
 
 export default function MainMenu() {
-    const [showMenu, setShowMenu] = useState(false);
-
-    const isDesktop = useMediaQuery("(min-width: 640px)", {initializeWithValue: false});
-    
-    return isDesktop ? 
-    <DesktopNavigationMenu/>
-    : 
-    <MobileNavigationMenu/>
+  return (
+    <>
+      <div className="hidden md:block">
+        <DesktopNavigationMenu />
+      </div>
+      <div className="md:hidden">
+        <MobileNavigationMenu />
+      </div>
+    </>
+  )
 }

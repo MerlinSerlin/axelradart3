@@ -16,6 +16,7 @@ export interface CardWithImageProps {
     title: string,
     dimensions?: string,
     description?: string,
+    theme?: string
 }
 
 

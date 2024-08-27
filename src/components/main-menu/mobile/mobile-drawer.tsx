@@ -73,7 +73,7 @@ export function MobileDrawer() {
     <Drawer onOpenChange={setIsDrawerOpen}>
       <DrawerTrigger className="w-full">
         <div className="w-full flex justify-between">
-          <span>Open Drawer</span>
+          <span>Collections</span>
           <div>
             <ChevronToggle isDrawerOpen={isDrawerOpen} />
           </div>

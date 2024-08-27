@@ -21,6 +21,7 @@ export default function Page() {
             title={image.title}
             description={image.description}
             dimensions={image.size}
+            theme={image.theme}
           />
           <CardFooter className="pt-6 w-11/12 rounded-lg border bg-card text-card-foreground shadow-sm">
             <Link href={`/collections/${image.theme}`} className="w-full">
