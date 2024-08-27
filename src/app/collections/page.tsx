@@ -20,7 +20,7 @@ export default function Page() {
             dimensions={image.size}
           />
           <CardFooter className="pt-6 w-11/12 rounded-lg border bg-card text-card-foreground shadow-sm">
-            <Link prefetch={false} href={`/collections/${image.theme}`} className="w-full">
+            <Link href={`/collections/${image.theme}`} className="w-full">
                 <Button className="w-full">
                 View Collection
                 </Button>

@@ -64,7 +64,7 @@ export function DesktopNavigationMenu() {
         <NavigationMenuItem>
           <DialogDemo title="The Artist"/>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -97,7 +97,7 @@ export function DesktopNavigationMenu() {
               </ListItem>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
         <NavigationMenuItem>
           <NavigationMenuTrigger>Collections</NavigationMenuTrigger>
           <NavigationMenuContent>

@@ -2226,3 +2226,21 @@ export const getThemeImages = () => {
 export const getCollection = (collectionName: string) => {
   return artData.items.filter(item => item.theme === collectionName);
 }
+
+export interface CollectionItem {
+  title: string,
+  description: string,
+  theme: string,
+  pathName: string,
+  mobilePathName?: string,
+  size: string,
+  orientation: string,
+  collectionOrder: number,
+  detail: string,
+  status: string,
+  eCommData: object,
+}
+
+export const getItem = (title: string): CollectionItem | undefined => {
+  return artData.items.find(item => item.title === title);
+}
