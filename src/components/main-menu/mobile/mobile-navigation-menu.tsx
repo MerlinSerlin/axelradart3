@@ -1,5 +1,3 @@
-"use client"
-
 import {
     Drawer,
     DrawerClose,   
@@ -14,19 +12,19 @@ import { MenuIcon } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { MainMenuData } from "@/data/main-menu-data";
 import { MobileDrawer } from "./mobile-drawer";
+import { useMobileMenuStore } from "@/store/mobile-menu";
 import Link from "next/link";
 
-import { useState } from "react";
-
 export function MobileNavigationMenu() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    // setIsMenuOpen is passed directly to onOpenChange, 
+    // setMenu is passed directly to onOpenChange, 
     // meaning whenever the Menu opens or closes, 
-    // setIsMenuOpen is called with the new state (either true or false).
+    // setMenu is called with the new state (either true or false).
+    
+    const { isMenuOpen, setMenu } = useMobileMenuStore();
   
     return (
-      <Drawer open={isMenuOpen} onOpenChange={setIsMenuOpen} direction="left">
+      <Drawer open={isMenuOpen} onOpenChange={setMenu} direction="left">
         <DrawerTrigger asChild>
           <Button
             className="fixed top-4 left-4 rounded-full border-2 border-white bg-slate-600 w-14 h-14 flex items-center justify-center z-20"
