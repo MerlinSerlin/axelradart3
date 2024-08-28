@@ -85,7 +85,7 @@ export function MobileDrawer() {
           </div>
         </div>
       </DrawerTrigger>
-      <DrawerContent className="w-full h-[calc(100vh-108px)]">
+      <DrawerContent className="w-full h-[calc(100vh-109px)]">
         <div className="w-full h-full overflow-y-auto">
           <DrawerHeader>
             <DrawerDescription>Tap a tile to view a collection.</DrawerDescription>
