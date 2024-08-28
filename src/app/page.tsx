@@ -3,9 +3,8 @@ import MainMenu from "@/components/main-menu/main-menu";
 import CardWithImage from "@/components/ui/card-with-image";
 import Image from "next/image";
 
-
-
 export default function Home() { 
+
   return (
     <div className="relative w-screen h-lvh">
       <Image 

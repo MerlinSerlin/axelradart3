@@ -3,7 +3,7 @@ export const artData = {
     {
       title: "Bay Area Foothills",
       description: "This is one of a three-piece series commissioned by the city of San Francisco for the Laguna Honda Healthcare Facility, a long-term healthcare facility. Located in the entry lobby, these collages celebrate the San Francisco Bay.",
-      theme: "hills_and_mountains",
+      theme: "hills-and-mountains",
       pathName: "/BayArea600w.jpg",
       mobilePathName: "/BayArea600w.jpg",
       size: "57\" x 43\"",
@@ -71,7 +71,7 @@ export const artData = {
     {
       title: "Bliss Park",
       description: "This was a private commission.  It is based on photos provided by the client of a favorite park in their home state.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Bliss_Park_600w.jpg",
       mobilePathName: "/Bliss_Park_600w.jpg",
       size: "30\" x 30\"",
@@ -175,7 +175,7 @@ export const artData = {
     {
       title: "Butterfly Effect (Exterior View)",
       description: "Commissioned as public art by Los Angeles County, this suspended sculpture hangs in the entry lobby of an outpatient mental health clinic. It includes 10,000 monarch butterflies and 1,000 leaves suspended from 6 metal branches.",
-      theme: "other_works",
+      theme: "other-works",
       pathName: "/Butterfly_Effect_From_Exterior.jpeg",
       mobilePathName: "/Butterfly_Effect_From_Exterior.jpeg",
       size: "10' x 14' x 16' long",
@@ -185,12 +185,14 @@ export const artData = {
       isDesktopThemeImage: true,
       themeText: "other_works",
       status: "not for sale",
-      eCommData: {}
+      eCommData: {
+
+      }
     },
     {
       title: "Butterfly Effect (Interior View)",
       description: "Commissioned as public art by Los Angeles County, this suspended sculpture hangs in the entry lobby of an outpatient mental health clinic. It includes 10,000 monarch butterflies and 1,000 leaves suspended from 6 metal branches.",
-      theme: "other_works",
+      theme: "other-works",
       pathName: "/Butterfly_Effect_Interior.jpeg",
       mobilePathName: "/Butterfly_Effect_Interior.jpeg",
       size: "10' x 14' x 16' long",
@@ -200,7 +202,9 @@ export const artData = {
       isDesktopThemeImage: true,
       themeText: "other_works",
       status: "not for sale",
-      eCommData: {}
+      eCommData: {
+
+      }
     },
     {
       title: "California Ricelands",
@@ -243,7 +247,7 @@ export const artData = {
     {
       title: "Central Coast Foothills",
       description: "Location - California Environmental Protection Agency's headquarters Part of an eight-piece series commissioned for Cal/EPA’s headquarters, each collage represents a geographic feature unique to California.  The collages are each on their own floor, arranged vertically by elevation - with Mt. Shasta on the top floor and Monterey Bay Canyon on the lowest floor.",
-      theme: "hills_and_mountains",
+      theme: "hills-and-mountains",
       pathName: "/Central_Coast_Foothills_600w.jpg",
       mobilePathName: "/Central_Coast_Foothills_600w.jpg",
       size: "50\" x 50\"",
@@ -553,7 +557,7 @@ export const artData = {
     {
       title: "Foothills",
       description: "This is one of four pieces created for “12 Voices”, an international juried show that opened at the Dennos Art Museum in Traverse City, Michigan in September of 2008. As the show’s curator put it, “The 12 Voices’ exhibition will give viewers a rare, in-depth look at twelve of the best fabric artists working today.” All four collages have been purchased by private individuals.",
-      theme: "hills_and_mountains",
+      theme: "hills-and-mountains",
       pathName: "/Foothills600w.jpg",
       mobilePathName: "/Foothills600w.jpg",
       size: "30\" x 45\"",
@@ -587,7 +591,7 @@ export const artData = {
     {
       title: "Foothills 2",
       description: "This piece was commissioned for a private home to go over the fireplace mantle. Because of the small size of this original, the threads and textures are unusually apparent, especially in enlargements.",
-      theme: "hills_and_mountains",
+      theme: "hills-and-mountains",
       pathName: "/Foothills_2_600w.jpg",
       mobilePathName: "/Foothills_2_600w.jpg",
       size: "15\" x 18\"",
@@ -621,7 +625,7 @@ export const artData = {
     {
       title: "Foothills In Spring",
       description: "This was a private commission.  It is based on the foothills surrounding the owner’s previous home.",
-      theme: "hills_and_mountains",
+      theme: "hills-and-mountains",
       pathName: "/Foothills_in_Spring_600w.jpg",
       mobilePathName: "/Foothills_in_Spring_600w.jpg",
       size: "36\" x 36\"",
@@ -655,7 +659,7 @@ export const artData = {
     {
       title: "Green Water",
       description: "This is studio work, focusing on the meeting of rocks and water. Because of the small size of this original, the threads and textures are unusually apparent, especially in enlargements. It is currently located in a private home.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Green_Water_600w.jpg",
       mobilePathName: "/Green_Water_600w.jpg",
       size: "30\" x 30\"",
@@ -689,7 +693,7 @@ export const artData = {
     {
       title: "Havasu Creek",
       description: "This was a private commission.  It is based on photos provided by the client, an avid rafter, depicting a side canyon of the Grand Canyon.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Havasu600w.jpg",
       mobilePathName: "/Havasu600w.jpg",
       size: "42\" x 42\"",
@@ -758,7 +762,7 @@ export const artData = {
     {
       title: "Jomolhari",
       description: "Jomolhari, sometimes known as \"the bride of Kangchenjunga,\" is a mountain in the Himalayas. This striking image is based on  a photo taken by the client's husband when the two were trekking in Bhutan at 18,000 feet.",
-      theme: "hills_and_mountains",
+      theme: "hills-and-mountains",
       pathName: "/Jomolhari600w.jpg",
       mobilePathName: "/Jomolhari600w.jpg",
       size: "48\" x 72\"",
@@ -792,7 +796,7 @@ export const artData = {
     {
       title: "Joshua Tree",
       description: "Location - California Environmental Protection Agency's headquarters Part of an eight-piece series commissioned for Cal/EPA’s headquarters, each collage represents a geographic feature unique to California.  The collages are each on their own floor, arranged vertically by elevation - with Mt. Shasta on the top floor and Monterey Bay Canyon on the lowest floor.",
-      theme: "hills_and_mountains",
+      theme: "hills-and-mountains",
       pathName: "/Joshua_Tree_600w.jpg",
       mobilePathName: "/Joshua_Tree_600w.jpg",
       size: "50\" x 50\"",
@@ -826,7 +830,7 @@ export const artData = {
     {
       title: "Lake Tahoe",
       description: "Location - California Environmental Protection Agency's headquarters Part of an eight-piece series commissioned for Cal/EPA’s headquarters, each collage represents a geographic feature unique to California.  The collages are each on their own floor, arranged vertically by elevation - with Mt. Shasta on the top floor and Monterey Bay Canyon on the lowest floor.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Lake_Tahoe_600w.jpg",
       mobilePathName: "/Lake_Tahoe_600w.jpg",
       size: "50\" x 50\"",
@@ -860,7 +864,7 @@ export const artData = {
     {
       title: "Lake Tahoe 2",
       description: "This is studio work, focusing on the meeting of rocks and water. Because of the small size of this original, the threads and textures are unusually apparent.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Lake_Tahoe_2_600w.jpg",
       mobilePathName: "/Lake_Tahoe_2_600w.jpg",
       size: "14\" x 18\"",
@@ -894,7 +898,7 @@ export const artData = {
     {
       title: "Lake Tahoe 3",
       description: "Original Sewn Fabric Collage 14\" x 18\" This is studio work, focusing on the meeting of rocks and water. Because of the small size of this original, the threads and textures are unusually apparent.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Lake_Tahoe_3_600w.jpg",
       mobilePathName: "/Lake_Tahoe_3_600w.jpg",
       size: "14\" x 18\"",
@@ -964,7 +968,7 @@ export const artData = {
     {
       title: "Madison Range",
       description: "This piece was commissioned to hang over a huge stone fireplace mantel in a private “cabin” in Montana. It depicts the local mountain range.",
-      theme: "hills_and_mountains",
+      theme: "hills-and-mountains",
       pathName: "/Madison_Range_600w.jpg",
       mobilePathName: "/Madison_Range_600w.jpg",
       size: "71\" x 41\"",
@@ -1038,7 +1042,7 @@ export const artData = {
     {
       title: "Mission Column",
       description: "This collage was the first architectural element created by the artist.  It is the precursor to much larger works, Mission Espada and Mission San Jose. Because of the small size of this original, the threads and textures are unusually apparent.",
-      theme: "other_works",
+      theme: "other-works",
       pathName: "/Mission_Column_600w.jpg",
       mobilePathName: "/Mission_Column_600w.jpg",
       size: "16\" x 12\"",
@@ -1072,7 +1076,7 @@ export const artData = {
     {
       title: "Mission Espada",
       description: "This is one of two collages commissioned by an energy company (NuStar Energy) in San Antonio, Texas. They requested San Antonio landmarks.  The two pieces each depict one of the missions in that city.",
-      theme: "other_works",
+      theme: "other-works",
       pathName: "/Mission_Espada_600w.jpg",
       mobilePathName: "/Mission_Espada_600w.jpg",
       size: "90\" x 60\"",
@@ -1106,7 +1110,7 @@ export const artData = {
     {
       title: "Mission San Jose",
       description: "This is one of two collages commissioned by an energy company (NuStar Energy) in San Antonio, Texas. They requested San Antonio landmarks.  The two pieces each depict one of the missions in that city.",
-      theme: "other_works",
+      theme: "other-works",
       pathName: "/Mission_San_Jose_600w.jpg",
       mobilePathName: "/Mission_San_Jose_600w.jpg",
       size: "90\" x 60\"",
@@ -1143,7 +1147,7 @@ export const artData = {
     {
       title: "Monterey Bay Canyon",
       description: "Location - California Environmental Protection Agency's headquarters Part of an eight-piece series commissioned for Cal/EPA’s headquarters, each collage represents a geographic feature unique to California.  The collages are each on their own floor, arranged vertically by elevation - with Mt. Shasta on the top floor and Monterey Bay Canyon on the lowest floor.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Monterey_Bay_600w.jpg",
       mobilePathName: "/Monterey_Bay_600w.jpg",
       size: "50\" x 50\"",
@@ -1177,7 +1181,7 @@ export const artData = {
     {
       title: "Mount Everest",
       description: "This was a private commission.  It is based on photos provided by the client from his recent climbing expedition on the mountain.",
-      theme: "hills_and_mountains",
+      theme: "hills-and-mountains",
       pathName: "/Mount_Everest_600w.jpg",
       mobilePathName: "/Mount_Everest_600w.jpg",
       size: "32\" x 41\"",
@@ -1211,7 +1215,7 @@ export const artData = {
     {
       title: "Mount Shasta",
       description: "Location - California Environmental Protection Agency's headquarters Part of an eight-piece series commissioned for Cal/EPA’s headquarters, each collage represents a geographic feature unique to California.  The collages are each on their own floor, arranged vertically by elevation - with Mt. Shasta on the top floor and Monterey Bay Canyon on the lowest floor.",
-      theme: "hills_and_mountains",
+      theme: "hills-and-mountains",
       pathName: "/Mount_Shasta_600w.jpg",
       mobilePathName: "/Mount_Shasta_600w.jpg",
       size: "50\" x 50\"",
@@ -1283,7 +1287,7 @@ export const artData = {
     {
       title: "Reflections",
       description: "Despite clearly representing water, this piece also presents itself as an abstract image.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Reflections600w.jpg",
       mobilePathName: "/Reflections600w.jpg",
       size: "23\" x 30\"",
@@ -1318,7 +1322,7 @@ export const artData = {
     {
       title: "Reflections 2",
       description: "Despite clearly representing water, this piece also presents itself as an abstract image.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Reflections_2_600w.jpg",
       mobilePathName: "/Reflections_2_600w.jpg",
       size: "23\" x 30\"",
@@ -1352,7 +1356,7 @@ export const artData = {
     {
       title: "River",
       description: "This is one of four pieces created for “12 Voices”, an international juried show that opened at the Dennos Art Museum in Traverse City, Michigan in September of 2008. As the show’s curator put it, “The 12 Voices’ exhibition will give viewers a rare, in-depth look at twelve of the best fabric artists working today.” All four collages have been purchased by private individuals.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/River600w.jpg",
       mobilePathName: "/River600w.jpg",
       size: "30\" x 45\"",
@@ -1386,7 +1390,7 @@ export const artData = {
     {
       title: "River 2",
       description: "This collage was a private commission.  The original is located in the home’s entryway.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/River_2_600w.jpg",
       mobilePathName: "/River_2_600w.jpg",
       size: "38\" x 20\"",
@@ -1420,7 +1424,7 @@ export const artData = {
     {
       title: "River 3",
       description: "This collage was a private commission.  The original is located in the home’s entryway.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/River_3_600w.jpg",
       mobilePathName: "/River_3_600w.jpg",
       size: "30\" x 23\"",
@@ -1454,7 +1458,7 @@ export const artData = {
     {
       title: "River 4",
       description: "This is a studio piece and explores a favorite subject - rocks and water. It depicts the three worlds that can come together at one time - the above-water world, the rocks below the water, and the reflections.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/River_4_600w.jpg",
       mobilePathName: "/River_4_600w.jpg",
       size: "36\" x 54\"",
@@ -1489,7 +1493,7 @@ export const artData = {
     {
       title: "River 5",
       description: "This is a studio piece and explores a favorite subject - rocks and water. It depicts the three worlds that can come together at one time - the above-water world, the rocks below the water, and the reflections.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/River_5_600w.jpg",
       mobilePathName: "/River_5_600w.jpg",
       size: "30\" x 30\"",
@@ -1633,7 +1637,7 @@ export const artData = {
     {
       title: "Sierra Stream 1",
       description: "Location - Whole Foods Corporate Headquarters, Emeryville CA The three collages, Sierra Stream 1, 2 and 3  were commissioned by Wareham Development for a corporate entry lobby.  It is part of a transit-oriented development in the San Francisco Bay Area.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Sierra_Stream_1_600w.jpg",
       mobilePathName: "/Sierra_Stream_1_600w.jpg",
       size: "50\" x 50\"",
@@ -1667,7 +1671,7 @@ export const artData = {
     {
       title: "Sierra Stream 2",
       description: "Location - Whole Foods Corporate Headquarters, Emeryville CA The three collages, Sierra Stream 1, 2 and 3  were commissioned by Wareham Development for a corporate entry lobby.  It is part of a transit-oriented development in the San Francisco Bay Area.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Sierra_Stream_2_600w.jpg",
       mobilePathName: "/Sierra_Stream_2_600w.jpg",
       size: "50\" x 50\"",
@@ -1701,7 +1705,7 @@ export const artData = {
     {
       title: "Sierra Stream 3",
       description: "Location - Whole Foods Corporate Headquarters, Emeryville CA The three collages, Sierra Stream 1, 2 and 3  were commissioned by Wareham Development for a corporate entry lobby.  It is part of a transit-oriented development in the San Francisco Bay Area.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Sierra_Stream_3_600w.jpg",
       mobilePathName: "/Sierra_Stream_3_600w.jpg",
       size: "50\" x 50\"",
@@ -1736,7 +1740,7 @@ export const artData = {
     {
       title: "Sierra Water",
       description: "Commissioned for a new Ritz Carlton hotel near Lake Tahoe, this collage captures the majestic trees and rocks of the local environments, reflected in the gorgeous Sierra waters.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Sierra_Water_600w.jpg",
       mobilePathName: "/Sierra_Water_600w.jpg",
       size: "58\" x 34\"",
@@ -1774,7 +1778,7 @@ export const artData = {
     {
       title: "Sonora Stone",
       description: "For this piece I worked from a photo taken by the client. I subsequently created a second collage of a photo I took of the same subject (Sonora Stone 2).",
-      theme: "hills_and_mountains",
+      theme: "hills-and-mountains",
       pathName: "/Sonora_Stone_600w.jpg",
       mobilePathName: "/Sonora_Stone_600w.jpg",
       size: "36\" x 36\"",
@@ -1810,7 +1814,7 @@ export const artData = {
     {
       title: "Sonora Stone 2",
       description: "This is the second collage based on this particular rock formation (Sonora Stone).  It was created as “studio work” and now resides in a private collection.",
-      theme: "hills_and_mountains",
+      theme: "hills-and-mountains",
       pathName: "/Sonora_Stone_2_600w.jpg",
       mobilePathName: "/Sonora_Stone_2_600w.jpg",
       size: "36\" x 36\"",
@@ -1844,7 +1848,7 @@ export const artData = {
     {
       title: "Stanislaus River",
       description: "This piece was commissioned by Kaiser Permanented for a hospital in Merced, located near the Stanislaus River",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Stanislaus_River_600w.jpg",
       mobilePathName: "/Stanislaus_River_600w.jpg",
       size: "30\" x 45\"",
@@ -2049,7 +2053,7 @@ export const artData = {
     {
       title: "Tuolumne River",
       description: "Original hangs in the conference room at Runyon, Saltzman, and Einhorn.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Tuolumne_River_600w.jpg",
       mobilePathName: "/Tuolumne_River_600w.jpg",
       size: "50\" x 50\"",
@@ -2083,7 +2087,7 @@ export const artData = {
     {
       title: "Verdant",
       description: "This collage was a private commission.  The original is located in the home’s living room.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Verdant600w.jpg",
       mobilePathName: "/Verdant600w.jpg",
       size: "41\" x 27\"",
@@ -2117,7 +2121,7 @@ export const artData = {
     {
       title: "Weave",
       description: "This was studio work and is one of the artist's very few truly abstract pieces. It is currently part of a private collection.",
-      theme: "other_works",
+      theme: "other-works",
       pathName: "/Weave600w.jpg",
       mobilePathName: "/Weave600w.jpg",
       size: "40\" x 38\"",
@@ -2151,7 +2155,7 @@ export const artData = {
     {
       title: "Yuba River",
       description: "This was a private commission for an executive office in the Cal EPA building. Since retiring, this executive has moved the piece to their home.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Yuba_River_600w.jpg",
       mobilePathName: "/Yuba_River_600w.jpg",
       size: "36\" x 36\"",
@@ -2185,7 +2189,7 @@ export const artData = {
     {
       title: "Yuba River 2",
       description: "This is studio work, focusing on the meeting of rocks and water. Because of the small size of this original, the threads and textures are unusually apparent.",
-      theme: "rocks_and_water",
+      theme: "rocks-and-water",
       pathName: "/Yuba_River_2_600w.jpg",
       mobilePathName: "/Yuba_River_2_600w.jpg",
       size: "14\" x 18\"",
@@ -2218,6 +2222,7 @@ export const artData = {
     }
   ]
 };
+
 
 export const getThemeImages = () => {
   return artData.items.filter(item => item.isThemeImage);

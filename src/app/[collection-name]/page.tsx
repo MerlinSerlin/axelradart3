@@ -1,16 +1,19 @@
 'use client'
 
-import CardWithImage from "@/components/ui/card-with-image";
-import { CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useParams, usePathname } from 'next/navigation'
+import CardWithImage from "@/components/ui/card-with-image";
 import { getCollection } from "@/data/art-data";
+import { CardFooter } from "@/components/ui/card";
 import Link from "next/link";
+import { useParams } from 'next/navigation';
 
-export default function Page() {
+export default function Page() { 
+  const collectionName = useParams()['collection-name'];
+  const collectionImages = getCollection(collectionName.toString());
 
-  const { collection } = useParams();
-  const collectionImages = getCollection(collection.toString());
+  const formatTitleForURL = (title: string) => {
+    return title.replace(/\s+/g, '-').toLowerCase();
+  }
 
   return (
     <div className="w-full h-lvh">
@@ -21,12 +24,11 @@ export default function Page() {
             title={image.title}
             description={image.description}
             dimensions={image.size}
-            theme={image.theme}
           />
           <CardFooter className="pt-6 w-11/12 rounded-lg border bg-card text-card-foreground shadow-sm">
-            <Link href={`/collections/${image.theme}`} className="w-full">
+            <Link href={`/${image.theme}/${formatTitleForURL(image.title)}`} className="w-full">
                 <Button className="w-full">
-                View Full Image
+                View Image
                 </Button>
             </Link>
           </CardFooter>
