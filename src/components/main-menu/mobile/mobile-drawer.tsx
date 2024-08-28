@@ -85,20 +85,20 @@ export function MobileDrawer() {
           </div>
         </div>
       </DrawerTrigger>
-      <DrawerContent className="w-full h-full ">
-        <div className="w-full h-full">
+      <DrawerContent className="w-full h-[calc(100vh-60px)]">
+        <div className="w-full h-full overflow-y-auto">
           <DrawerHeader>
             <DrawerDescription>Tap a tile to view a collection.</DrawerDescription>
           </DrawerHeader>
-          <div className="flex flex-wrap justify-center w-full h-[calc(100vh-80px)]">
+          <div className="flex flex-wrap justify-center w-full h-full">
               {themeImages.map((image, index) => (
                 <div className="relative w-[calc(50vw-.75rem)] h-auto m-1" key={index}>
-                <Image
-                  src={`/art-images${image.pathName}`}
-                  fill
-                  style={{objectFit: 'cover'}}
-                  alt={image.description}
-                />
+                  <Image
+                    src={`/art-images${image.pathName}`}
+                    fill
+                    style={{objectFit: 'cover'}}
+                    alt={image.description}
+                  />
                 </div>
               ))}
           </div>
