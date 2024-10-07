@@ -20,7 +20,9 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={inter.className}>
         <MainMenu />
-        {children}
+        <div className="mt-16 md:mt-0">
+          {children}
+        </div>
         </body>
     </html>
   );

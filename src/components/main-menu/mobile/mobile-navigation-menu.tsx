@@ -26,12 +26,12 @@ export function MobileNavigationMenu() {
     return (
       <Drawer open={isMenuOpen} onOpenChange={setMenu} direction="left">
         <DrawerTrigger asChild>
-          <Button
-            className="fixed top-4 left-4 rounded-full border-2 border-white bg-slate-600 w-14 h-14 flex items-center justify-center z-20"
+          {/* <Button
+            className="flex justify-start border-1 border-[rgb(30,41,59)] w-12 h-12 z-20"
             variant="ghost"
-          >
+          > */}
             <MenuIcon color="white" />
-          </Button>
+          {/* </Button> */}
         </DrawerTrigger>
         <DrawerHeader className="flex flex-row justify-between items-center space-y-0 p-0">
           <VisuallyHidden>
