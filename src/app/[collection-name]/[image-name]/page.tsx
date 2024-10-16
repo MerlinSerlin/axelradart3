@@ -10,15 +10,21 @@ import { useParams } from 'next/navigation';
 export default function Page() { 
   function capitalizeFirstLetterOfEachWord(input: string): string {
     return input
-      .split(' ')                   // Split the string into an array of words
-      .map(word =>                  // Map over each word
-      word.charAt(0).toUpperCase() + word.slice(1) // Capitalize the first letter and concatenate with the rest of the word
-      )
-      .join(' ');                   // Join the array of words back into a single string
+      .split(' ')                      // Split the string into an array of words
+      .map(word => {
+        // Check if the word starts with '(' and capitalize the letter after it
+        if (word.startsWith('(')) {
+          return '(' + word.charAt(1).toUpperCase() + word.slice(2);
+        }
+        // Otherwise, capitalize the first letter as usual
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
+      .join(' ');                      // Join the array of words back into a single string
   }
 
   const imageName = useParams()['image-name'].toString();
   const formattedImageName = imageName.replace(/-/g, ' ');
+  console.log(capitalizeFirstLetterOfEachWord(formattedImageName));
   const imageData = getItem(capitalizeFirstLetterOfEachWord(formattedImageName));
 
   console.log(imageData);

@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      boxShadow: {
+        'inner-strong': 'inset 0 -4px 12px rgba(255, 255, 255, 0.3)', // Stronger, lighter inner shadow for dark backgrounds
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -27,8 +27,8 @@ export default function MainMenu() {
         <DesktopNavigationMenu />
       </div>
       <div className="md:hidden relative">
-        <div className="flex items-center fixed top-0 z-50 w-full h-16 bg-[rgb(2,8,23)] shadow-md rounded">
-          <div className="ml-[16px]">
+        <div className="flex items-center fixed top-0 z-50 w-full h-16 bg-background rounded">
+          <div className="ml-4">
             <MobileNavigationMenu/>
           </div>
         </div>

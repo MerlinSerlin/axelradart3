@@ -24,48 +24,6 @@ import ChevronToggle from "./chevron-toggle"
 import { useMobileMenuStore } from "@/store/mobile-menu"
 import { getThemeImages } from "@/data/art-data"
 
-const data = [
-  {
-    goal: 400,
-  },
-  {
-    goal: 300,
-  },
-  {
-    goal: 200,
-  },
-  {
-    goal: 300,
-  },
-  {
-    goal: 200,
-  },
-  {
-    goal: 278,
-  },
-  {
-    goal: 189,
-  },
-  {
-    goal: 239,
-  },
-  {
-    goal: 300,
-  },
-  {
-    goal: 200,
-  },
-  {
-    goal: 278,
-  },
-  {
-    goal: 189,
-  },
-  {
-    goal: 349,
-  },
-]
-
 export function MobileDrawer() { 
   const { isDrawerOpen, setDrawer, closeMenu } = useMobileMenuStore();
 
@@ -104,6 +62,7 @@ export function MobileDrawer() {
                         fill
                         style={{objectFit: 'cover'}}
                         alt={image.description}
+                        sizes="50vw"
                       />
                     </DrawerClose>
                     {/* </a> */}
