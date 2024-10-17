@@ -17,6 +17,8 @@ import {
 
 import CollectionsData from "@/data/collections-data"
 import { DialogDemo } from "../ui/dialog-demo"
+import { TheArtistOverlay } from "./overlays/the-artist-overlay"
+import { ContactOverlay }from "./overlays/contact-overlay"
 
 // const collectionsData: { title: string; href: string; description: string }[] = [
 //   {
@@ -62,42 +64,10 @@ export function DesktopNavigationMenu() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <DialogDemo title="The Artist"/>
+          {/* <DialogDemo title="The Artist"/> */}
+          <TheArtistOverlay title="The Artist"/>
         </NavigationMenuItem>
-        {/* <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
-                  >
-                    <SunIcon className="h-6 w-6" />
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      shadcn/ui
-                    </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components that you can copy and
-                      paste into your apps. Accessible. Customizable. Open
-                      Source.
-                    </p>
-                  </a>
-                </NavigationMenuLink>
-              </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
-              </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
-              </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem> */}
+
         <NavigationMenuItem>
           <NavigationMenuTrigger>Collections</NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -118,7 +88,7 @@ export function DesktopNavigationMenu() {
           <DialogDemo title="Prices"/>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <DialogDemo title="Contact"/>
+          <ContactOverlay title="Contact"/>
         </NavigationMenuItem>
         {/* <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>

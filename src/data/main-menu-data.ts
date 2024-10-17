@@ -14,7 +14,11 @@ export const MainMenuData = {
         },
         {
             title: "Contact",
-            href: "/contact",
+            href: "#",
+        },
+        {
+            title: "The Artist",
+            href: "#",
         }
     ],
 }

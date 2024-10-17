@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import MainMenu from "@/components/main-menu/main-menu";
-import BoilerplateMenu from "@/components/main-menu/boilerplate-menu";
 
 const inter = Inter({ subsets: ["latin"] });
 
