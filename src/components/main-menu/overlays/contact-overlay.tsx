@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -14,6 +17,14 @@ import { Textarea } from "@/components/ui/textarea"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 
 export function ContactOverlay() {
+  const [isInputActive, setInputActive] = useState(false);
+
+  const handleInputFocus = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (!isInputActive) {
+      event.target.blur(); // Prevent keyboard from showing
+    }
+  };
+
   return (
     <Dialog>
       <VisuallyHidden>
@@ -21,9 +32,9 @@ export function ContactOverlay() {
         <DialogDescription>A Form For Contacting The Artist</DialogDescription>
       </VisuallyHidden>
       <DialogTrigger asChild>
-      <div>
+        <div>
           <div className="hidden md:block lg:block">
-            <Button variant="outline">Contact</Button>
+            <Button variant="outline" onClick={() => setInputActive(true)}>Contact</Button>
           </div>
           <h2 className="block sm:hidden text-xl rounded-md border pl-3 p-3">
             Contact
@@ -46,6 +57,8 @@ export function ContactOverlay() {
               id="name"
               defaultValue="Pedro Duarte"
               className="col-span-3"
+              onFocus={handleInputFocus}
+              readOnly={!isInputActive} // Only allow input if active
             />
             <Label htmlFor="email" className="text-right">
               Email
@@ -54,14 +67,20 @@ export function ContactOverlay() {
               id="email"
               defaultValue="pduarte@hotmail.com"
               className="col-span-3"
+              onFocus={handleInputFocus}
+              readOnly={!isInputActive} // Only allow input if active
             />
           </div>
-          <Textarea placeholder="Type your message here."/>
+          <Textarea 
+            placeholder="Type your message here."
+            onFocus={handleInputFocus}
+            readOnly={!isInputActive} // Only allow input if active
+          />
         </div>
         <DialogFooter>
-          <Button type="submit">Send Message</Button>
+          <Button type="submit" onClick={() => setInputActive(true)}>Send Message</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
