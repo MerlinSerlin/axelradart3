@@ -12,16 +12,24 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { title } from "process"
 import Image from "next/image"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 
-export interface TheArtistOverlayProps {
-    title: string
-}
-
-export function TheArtistOverlay(props: TheArtistOverlayProps) {
+export function TheArtistOverlay() {
   return (
     <Dialog>
+      <VisuallyHidden>
+        <DialogTitle>The Artist</DialogTitle>
+        <DialogDescription>An Overlay Image of the Artist</DialogDescription>
+      </VisuallyHidden>
       <DialogTrigger asChild>
-        <Button variant="outline">{props.title}</Button>
+        <div>
+          <div className="hidden md:block lg:block">
+            <Button variant="outline">The Artist</Button>
+          </div>
+          <h2 className="block sm:hidden text-xl rounded-md border pl-3 p-3">
+            The Artist
+          </h2>
+        </div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <Image

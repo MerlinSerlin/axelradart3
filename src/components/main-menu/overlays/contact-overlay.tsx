@@ -11,16 +11,24 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 
-export interface ContactOverlayProps {
-    title: string
-}
-
-export function ContactOverlay(props: ContactOverlayProps) {
+export function ContactOverlay() {
   return (
     <Dialog>
+      <VisuallyHidden>
+        <DialogTitle>Contact</DialogTitle>
+        <DialogDescription>A Form For Contacting The Artist</DialogDescription>
+      </VisuallyHidden>
       <DialogTrigger asChild>
-        <Button variant="outline">{props.title}</Button>
+      <div>
+          <div className="hidden md:block lg:block">
+            <Button variant="outline">Contact</Button>
+          </div>
+          <h2 className="block sm:hidden text-xl rounded-md border pl-3 p-3">
+            Contact
+          </h2>
+        </div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

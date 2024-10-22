@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import MainMenu from "@/components/main-menu/main-menu";
+import { Overlays } from "@/components/main-menu/overlays/overlays";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={inter.className}>
+        <Overlays />
         <MainMenu />
         <div className="mt-16 md:mt-0">
           {children}

@@ -64,10 +64,8 @@ export function DesktopNavigationMenu() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          {/* <DialogDemo title="The Artist"/> */}
-          <TheArtistOverlay title="The Artist"/>
+          <TheArtistOverlay />
         </NavigationMenuItem>
-
         <NavigationMenuItem>
           <NavigationMenuTrigger>Collections</NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -88,7 +86,7 @@ export function DesktopNavigationMenu() {
           <DialogDemo title="Prices"/>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <ContactOverlay title="Contact"/>
+          <ContactOverlay />
         </NavigationMenuItem>
         {/* <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>

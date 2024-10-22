@@ -14,6 +14,7 @@ import { MainMenuData } from "@/data/main-menu-data";
 import { MobileDrawer } from "./mobile-drawer";
 import { useMobileMenuStore } from "@/store/mobile-menu";
 import Link from "next/link";
+import MobileNavigationMenuItems from "./mobile-navigation-menu-items";
 
 export function MobileNavigationMenu() {
 
@@ -52,7 +53,7 @@ export function MobileNavigationMenu() {
           >
               <MobileDrawer />
           </div>
-            {MainMenuData.items.map((item, index) => (
+            {/* {MainMenuData.items.map((item, index) => (
               <DrawerClose asChild key={index}>
                 <Link href={item.href} >
                   <h2 className="rounded-md border text-xl pl-3 p-3">
@@ -60,7 +61,8 @@ export function MobileNavigationMenu() {
                   </h2>
                 </Link>
               </DrawerClose>
-            ))}
+            ))} */}
+            <MobileNavigationMenuItems />
           </div>
         </DrawerContent>
       </Drawer>
