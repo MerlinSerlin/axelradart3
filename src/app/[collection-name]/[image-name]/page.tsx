@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from "@/components/ui/button";
-import CardWithImage from "@/components/ui/card-with-image";
+import ArtworkTabs from "@/components/ui/artwork-tabs";
 import { getItem } from "@/data/art-data";
 import { CardFooter } from "@/components/ui/card";
 import Link from "next/link";
@@ -34,22 +34,28 @@ export default function Page() {
   const { title, description, size, theme, pathName } = imageData;
 
   return (
-    <div className="w-full h-lvh">
-        <div className="relative flex flex-col items-center mb-6">
-          <CardWithImage  
-            src={`/art-images${pathName}`}
-            title={title}
-            description={description}
-            dimensions={size}
-          />
-          <CardFooter className="pt-6 w-11/12 rounded-lg border bg-card text-card-foreground shadow-sm">
-            <Link href="#" className="w-full">
-                <Button className="w-full">
-                Buy Prints
-                </Button>
-            </Link>
-          </CardFooter>
+    <div className="w-full min-h-screen p-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold mb-2">{title}</h1>
+          <p className="text-gray-600">Dimensions: {size}</p>
         </div>
+        
+        <ArtworkTabs
+          title={title}
+          description={description}
+          size={size}
+          src={`/art-images${pathName}`}
+        />
+        
+        <CardFooter className="pt-6 mt-8 rounded-lg border bg-card text-card-foreground shadow-sm">
+          <Link href="#" className="w-full">
+            <Button className="w-full">
+              Buy Prints
+            </Button>
+          </Link>
+        </CardFooter>
+      </div>
     </div>
   );
 }
