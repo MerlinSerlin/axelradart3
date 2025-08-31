@@ -67,7 +67,6 @@ export default function ArtworkTabs({ title, description, size, src, className }
             artworkSrc={src}
             artworkAlt={title}
             size={size}
-            fullScreen={true}
             onClose={() => {
               setShowFullScreenRoom(false)
               setActiveTab('artwork')
