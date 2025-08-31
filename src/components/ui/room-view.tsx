@@ -39,6 +39,7 @@ export default function RoomView({ artworkSrc, artworkAlt, size, onClose }: Room
   
   const dimensions = parseDimensions(size)
   const artworkScale = dimensions ? calculateArtworkScale(dimensions) : { width: 80, height: 60 }
+  
 
   return (
     <div className="fixed inset-0 z-50 bg-gray-100 overflow-hidden">
@@ -80,7 +81,7 @@ export default function RoomView({ artworkSrc, artworkAlt, size, onClose }: Room
              }} />
         
         {/* Clear wall/floor boundary line */}
-        <div className="absolute left-0 right-0 h-0.5 bg-gray-500 opacity-40" style={{bottom: '37.5%'}}></div>
+        <div className="absolute left-0 right-0 h-0.5 bg-gray-600 opacity-60" style={{bottom: '37.5%'}}></div>
         
         {/* Bench */}
         <div className="absolute left-1/2 transform -translate-x-1/2 w-96 h-20" 
@@ -96,13 +97,13 @@ export default function RoomView({ artworkSrc, artworkAlt, size, onClose }: Room
         
         {/* Length dimension arrow */}
         <div className="absolute left-1/2 transform -translate-x-1/2 w-96" 
-             style={{bottom: 'calc(37.5% - 120px)'}}>
+             style={{bottom: 'calc(37.5% + 30px)'}}>
           <div className="flex items-center w-full">
             <div className="flex flex-col items-center">
               <div className="w-px h-6 bg-gray-600"></div>
             </div>
             <div className="flex-1 border-t border-gray-600 relative">
-              <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-sm text-gray-700">8 ft</span>
+              <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-700">8 ft</span>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-px h-6 bg-gray-600"></div>
@@ -118,8 +119,7 @@ export default function RoomView({ artworkSrc, artworkAlt, size, onClose }: Room
           className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-2xl border border-gray-200"
           style={{ 
             width: `${artworkScale.width}px`, 
-            height: `${artworkScale.height}px`,
-            marginTop: '-20px'
+            height: `${artworkScale.height}px`
           }}
         >
           <div className="relative w-full h-full p-3">
@@ -128,7 +128,7 @@ export default function RoomView({ artworkSrc, artworkAlt, size, onClose }: Room
                 src={artworkSrc}
                 alt={artworkAlt}
                 fill
-                style={{ objectFit: 'fill' }}
+                style={{ objectFit: 'contain' }}
                 className={cn(
                   "transition-opacity duration-300",
                   imageLoaded ? "opacity-100" : "opacity-0"
