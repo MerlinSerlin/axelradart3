@@ -28,9 +28,16 @@ function calculateArtworkScale(dimensions: { width: number; height: number }) {
   const benchPixelWidth = 384 // pixels in our room
   const pixelsPerInch = benchPixelWidth / benchRealWidth
   
+  // Calculate inner dimensions first (what the image area should be)
+  const innerWidth = dimensions.width * pixelsPerInch
+  const innerHeight = dimensions.height * pixelsPerInch
+  
+  // Add padding back to get frame dimensions (p-3 = 12px on all sides)
+  const paddingTotal = 24 // 12px * 2 sides
+  
   return {
-    width: dimensions.width * pixelsPerInch,
-    height: dimensions.height * pixelsPerInch
+    width: innerWidth + paddingTotal,
+    height: innerHeight + paddingTotal
   }
 }
 
