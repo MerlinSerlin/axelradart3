@@ -25,7 +25,7 @@ function parseDimensions(size: string): { width: number; height: number } | null
 function calculateArtworkScale(dimensions: { width: number; height: number }) {
   // Bench is 8 feet (96") long, 18" high - this sets our scale
   const benchRealWidth = 96 // inches
-  const benchPixelWidth = 384 // pixels in our room
+  const benchPixelWidth = 320 // pixels - fits mobile (320px+) while reasonable on desktop
   const pixelsPerInch = benchPixelWidth / benchRealWidth
   
   // Calculate inner dimensions first (what the image area should be)
@@ -91,19 +91,19 @@ export default function RoomView({ artworkSrc, artworkAlt, size, onClose }: Room
         <div className="absolute left-0 right-0 h-0.5 bg-gray-600 opacity-60" style={{bottom: '37.5%'}}></div>
         
         {/* Bench */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-96 h-20" 
+        <div className="absolute left-1/2 transform -translate-x-1/2 w-80 h-16" 
              style={{bottom: 'calc(37.5% - 50px)'}}>
           <Image
             src="/other-images/bench.png"
             alt="Wooden bench for scale (8 feet long)"
-            width={384}
-            height={80}
+            width={320}
+            height={64}
             style={{ objectFit: 'fill' }}
           />
         </div>
         
         {/* Length dimension arrow */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-96" 
+        <div className="absolute left-1/2 transform -translate-x-1/2 w-80" 
              style={{bottom: 'calc(37.5% + 30px)'}}>
           <div className="flex items-center w-full">
             <div className="flex flex-col items-center">
