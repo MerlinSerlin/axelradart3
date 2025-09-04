@@ -13,13 +13,9 @@ import { MobileDrawer } from "./mobile-drawer";
 import { useMobileMenuStore } from "@/store/mobile-menu";
 import MobileNavigationMenuItems from "./mobile-navigation-menu-items";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { Suspense } from "react";
 
-export function MobileNavigationMenu() {
-
-    // setMenu is passed directly to onOpenChange, 
-    // meaning whenever the Menu opens or closes, 
-    // setMenu is called with the new state (either true or false).
-    
+function MobileNavigationMenuContent() {
     const { isMenuOpen, setMenu } = useMobileMenuStore();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -103,4 +99,19 @@ export function MobileNavigationMenu() {
         )}
       </>
     );
-  }
+}
+
+export function MobileNavigationMenu() {
+  return (
+    <Suspense fallback={
+      <Button
+        className="p-0 bg-transparent hover:bg-transparent"
+        variant="ghost"
+      >
+        <MenuIcon color="white" size={24} />
+      </Button>
+    }>
+      <MobileNavigationMenuContent />
+    </Suspense>
+  );
+}
