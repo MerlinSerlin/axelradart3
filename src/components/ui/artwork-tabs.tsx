@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import ImageWithZoom from "@/components/ui/image-with-zoom"
 import RoomView from "@/components/ui/room-view"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 
 type TabType = 'artwork' | 'room' | 'details'
 
@@ -14,11 +14,18 @@ export interface ArtworkTabsProps {
   size: string
   src: string
   className?: string
+  activeView?: string
+  onViewChange?: (view: string) => void
 }
 
-export default function ArtworkTabs({ title, description, size, src, className }: ArtworkTabsProps) {
-  const [activeTab, setActiveTab] = useState<TabType>('artwork')
-  const [showFullScreenRoom, setShowFullScreenRoom] = useState(false)
+export default function ArtworkTabs({ title, description, size, src, className, activeView = 'artwork', onViewChange }: ArtworkTabsProps) {
+  const [activeTab, setActiveTab] = useState<TabType>(activeView as TabType)
+  const [showFullScreenRoom, setShowFullScreenRoom] = useState(activeView === 'room')
+
+  useEffect(() => {
+    setActiveTab(activeView as TabType);
+    setShowFullScreenRoom(activeView === 'room');
+  }, [activeView]);
 
   const tabs = [
     { id: 'artwork' as TabType, label: 'Artwork' },
@@ -33,11 +40,16 @@ export default function ArtworkTabs({ title, description, size, src, className }
           <button
             key={tab.id}
             onClick={() => {
-              if (tab.id === 'room') {
-                setShowFullScreenRoom(true)
+              if (onViewChange) {
+                onViewChange(tab.id);
               } else {
-                setActiveTab(tab.id)
-                setShowFullScreenRoom(false)
+                // Original behavior when no onViewChange provided
+                if (tab.id === 'room') {
+                  setShowFullScreenRoom(true)
+                } else {
+                  setActiveTab(tab.id)
+                  setShowFullScreenRoom(false)
+                }
               }
             }}
             className={cn(
@@ -76,19 +88,15 @@ export default function ArtworkTabs({ title, description, size, src, className }
 
         {activeTab === 'details' && (
           <Card>
-            <CardHeader>
-              <CardTitle>{title}</CardTitle>
-              <CardDescription>Dimensions: {size}</CardDescription>
-            </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-semibold mb-2">Description</h3>
-                <p className="text-gray-700 leading-relaxed">{description}</p>
+                <h3 className="font-semibold mb-2 text-white">Description</h3>
+                <p className="text-muted-foreground leading-relaxed">{description}</p>
               </div>
               <div>
-                <h3 className="font-semibold mb-2">Specifications</h3>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>Size: {size}</li>
+                <h3 className="font-semibold mb-2 text-white">Specifications</h3>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>Dimensions: {size}</li>
                   <li>Medium: Mixed media collage</li>
                   <li>Frame: Available separately</li>
                 </ul>

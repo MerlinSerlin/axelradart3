@@ -113,7 +113,7 @@ export function ContactOverlay() {
             </Label>
             <Input
               id="name"
-              defaultValue="Pedro Duarte"
+              defaultValue="Ashli Bubbala"
               className="col-span-3"
               onFocus={handleInputFocus}
               readOnly={!isInputActive} // Only allow input if active
@@ -123,7 +123,7 @@ export function ContactOverlay() {
             </Label>
             <Input
               id="email"
-              defaultValue="pduarte@hotmail.com"
+              defaultValue="abubbala@hotmail.com"
               className="col-span-3"
               onFocus={handleInputFocus}
               readOnly={!isInputActive} // Only allow input if active

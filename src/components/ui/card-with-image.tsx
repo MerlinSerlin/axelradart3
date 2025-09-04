@@ -26,14 +26,18 @@ type CardProps = React.ComponentProps<typeof Card>
 type ButtonProps = React.ComponentProps<typeof Button>
 
 export default function CardWithImage({ className, ...props }: CardWithImageProps & CardProps & ButtonProps) {
+  const hasHeaderContent = props.title || props.dimensions || props.description;
+  
   return (
     <Card className={cn("w-11/12", className)} {...props}>
-      <CardHeader>
-      <CardTitle>{props.title}</CardTitle>
-      <CardDescription>{props.dimensions}</CardDescription>
-      <CardDescription>{props.description}</CardDescription>
-      </CardHeader>
-      <CardContent className="pt-6">
+      {hasHeaderContent && (
+        <CardHeader>
+          <CardTitle>{props.title}</CardTitle>
+          <CardDescription>{props.dimensions}</CardDescription>
+          <CardDescription>{props.description}</CardDescription>
+        </CardHeader>
+      )}
+      <CardContent >
         {props.enableZoom ? (
           <ImageWithZoom 
             src={props.src}

@@ -6,8 +6,13 @@ import { getItem } from "@/data/art-data";
 import { CardFooter } from "@/components/ui/card";
 import Link from "next/link";
 import { useParams } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function Page() { 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   function capitalizeFirstLetterOfEachWord(input: string): string {
     return input
       .split(' ')                      // Split the string into an array of words
@@ -24,21 +29,30 @@ export default function Page() {
 
   const imageName = useParams()['image-name'].toString();
   const formattedImageName = imageName.replace(/-/g, ' ');
-  console.log(capitalizeFirstLetterOfEachWord(formattedImageName));
-  const imageData = getItem(capitalizeFirstLetterOfEachWord(formattedImageName));
+  const finalTitleForLookup = capitalizeFirstLetterOfEachWord(formattedImageName);
+  const imageData = getItem(finalTitleForLookup);
 
-  console.log(imageData);
+  if (!imageData) { 
+    return (
+      <div className="w-full min-h-screen p-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8">
+            <h1 className="text-2xl font-bold mb-2 text-red-600">Image not found</h1>
+            <p>Looking for: &ldquo;{finalTitleForLookup}&rdquo;</p>
+            <p>URL: {imageName}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-  if (!imageData) { return <div>Image not found</div> }
-
-  const { title, description, size, theme, pathName } = imageData;
+  const { title, description, size, pathName } = imageData;
 
   return (
     <div className="w-full min-h-screen p-6">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">{title}</h1>
-          <p className="text-gray-600">Dimensions: {size}</p>
+          <h1 className="text-2xl font-bold mb-2 text-white">{title}</h1>
         </div>
         
         <ArtworkTabs
