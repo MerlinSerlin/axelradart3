@@ -27,6 +27,7 @@ const MobileNavigationMenuItems = () => {
 
     return (
     <>
+        {/* Standard Menu Items */}
         <DrawerClose asChild>
             <Link href="/fabric-art">
                 <h2 className="rounded-md border text-xl pl-3 p-3">
@@ -46,18 +47,10 @@ const MobileNavigationMenuItems = () => {
                 Prices
             </h2>
         </DrawerClose>
-        {/* <DrawerClose asChild onClick={handleContactClick}>
-            <h2 className="rounded-md border text-xl pl-3 p-3">
-                Contact
-            </h2>
-        </DrawerClose> */}
         <DrawerClose asChild onClick={handleContactClick}>
             <ContactOverlay/>
         </DrawerClose>
         <DrawerClose asChild onClick={handleTheArtistClick}>
-            {/* <h2 className="rounded-md border text-xl pl-3 p-3">
-                The Artist
-            </h2> */}
             <TheArtistOverlay/>
         </DrawerClose>
     </>
