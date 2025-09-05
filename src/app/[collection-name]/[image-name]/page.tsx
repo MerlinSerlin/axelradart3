@@ -30,6 +30,7 @@ export default function Page() {
   const imageName = useParams()['image-name'].toString();
   const formattedImageName = imageName.replace(/-/g, ' ');
   const finalTitleForLookup = capitalizeFirstLetterOfEachWord(formattedImageName);
+  
   const imageData = getItem(finalTitleForLookup);
 
   if (!imageData) { 
@@ -49,7 +50,7 @@ export default function Page() {
   const { title, description, size, pathName } = imageData;
 
   return (
-    <div className="w-full min-h-screen p-6">
+    <div className="w-full min-h-screen p-6 bg-black">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <h1 className="text-2xl font-bold mb-2 text-white">{title}</h1>
