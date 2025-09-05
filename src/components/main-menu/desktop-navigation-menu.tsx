@@ -2,9 +2,9 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 
 import { cn } from "@/lib/utils"
-import { SunIcon } from "lucide-react"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,7 +12,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 
 import CollectionsData from "@/data/collections-data"
@@ -61,8 +60,9 @@ import { ContactOverlay }from "./overlays/contact-overlay"
 
 export function DesktopNavigationMenu() {
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
+    <div className="flex items-center justify-between w-full px-6 py-4">
+      <NavigationMenu>
+        <NavigationMenuList>
         <NavigationMenuItem>
           <TheArtistOverlay />
         </NavigationMenuItem>
@@ -100,8 +100,18 @@ export function DesktopNavigationMenu() {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem> */}
-      </NavigationMenuList>
-    </NavigationMenu>
+        </NavigationMenuList>
+      </NavigationMenu>
+      <Link href="/" className="flex items-center">
+        <Image
+          src="/svgs/MA-logo.svg"
+          alt="Merle Axelrad Logo"
+          width={120}
+          height={60}
+          className="object-contain"
+        />
+      </Link>
+    </div>
   )
 }
 

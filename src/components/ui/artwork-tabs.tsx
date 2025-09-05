@@ -73,7 +73,7 @@ export default function ArtworkTabs({ title, description, size, src, className, 
         )}
 
         {showFullScreenRoom && (
-          <Suspense fallback={<div>Loading room view...</div>}>
+          <Suspense fallback={null}>
             <RoomView 
               artworkSrc={src}
               artworkAlt={title}
