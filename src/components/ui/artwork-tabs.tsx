@@ -64,7 +64,7 @@ export default function ArtworkTabs({ title, description, size, src, className, 
 
       <div className="min-h-[500px]">
         {activeTab === 'artwork' && (
-          <div className="rounded-md border bg-slate-900 min-h-[400px]">
+          <div className="rounded-md border bg-black min-h-[400px]">
             <ImageWithZoom 
               src={src}
               alt={title}
