@@ -2,15 +2,19 @@
 
 import CardWithImage from "@/components/ui/card-with-image";
 import { getCollection } from "@/data/art-data";
-import { useParams, useRouter } from 'next/navigation';
-import { useState, useEffect } from "react";
+import { useParams, useRouter, usePathname } from 'next/navigation';
+import { Suspense } from "react";
 import ArtworkModal from "@/components/ui/artwork-modal";
 
-export default function Page() { 
+function CollectionContent() {
   const collectionName = useParams()['collection-name'];
   const router = useRouter();
+  const pathname = usePathname();
   const collectionImages = getCollection(collectionName.toString());
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  
+  // Determine modal state directly from URL without local state
+  const pathParts = pathname.split('/').filter(Boolean);
+  const selectedImage = pathParts.length === 2 && pathParts[0] === collectionName ? pathParts[1] : null;
 
   const formatTitleForURL = (title: string) => {
     return title.replace(/\s+/g, '-').toLowerCase();
@@ -21,12 +25,10 @@ export default function Page() {
     sessionStorage.setItem(`scroll-${collectionName}`, window.scrollY.toString());
     
     const imageUrl = formatTitleForURL(image.title);
-    setSelectedImage(imageUrl);
     router.push(`/${image.theme}/${imageUrl}`);
   };
 
   const handleCloseModal = () => {
-    setSelectedImage(null);
     router.push(`/${collectionName}`, { scroll: false });
   };
 
@@ -58,5 +60,13 @@ export default function Page() {
         />
       )}
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div className="w-full h-lvh bg-black"></div>}>
+      <CollectionContent />
+    </Suspense>
   );
 }

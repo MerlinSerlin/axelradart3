@@ -59,8 +59,8 @@ export default function ArtworkModal({ imageName, collectionName, onClose }: Art
   if (!imageData) {
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div className="bg-white p-6 rounded-lg">
-          <p>Image not found</p>
+        <div className="bg-black p-6 rounded-lg">
+          <p className="text-white">Image not found</p>
           <Button onClick={onClose} className="mt-4">Close</Button>
         </div>
       </div>
@@ -71,11 +71,10 @@ export default function ArtworkModal({ imageName, collectionName, onClose }: Art
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
+      <div className="bg-black rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="sticky top-0 bg-black border-b p-4 flex justify-between items-center">
           <div>
             <h1 className="text-2xl font-bold">{title}</h1>
-            <p className="text-gray-600">Dimensions: {size}</p>
           </div>
           <Button
             variant="ghost"
@@ -97,7 +96,7 @@ export default function ArtworkModal({ imageName, collectionName, onClose }: Art
             onViewChange={handleViewChange}
           />
           
-          <CardFooter className="pt-6 mt-8 rounded-lg border bg-card text-card-foreground shadow-sm">
+          <CardFooter className="pt-6 mt-8 rounded-lg border bg-black text-white shadow-sm">
             <Link href="#" className="w-full">
               <Button className="w-full">
                 Buy Prints
