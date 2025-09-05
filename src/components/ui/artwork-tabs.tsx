@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, lazy, Suspense } from "react"
 import { cn } from "@/lib/utils"
 import ImageWithZoom from "@/components/ui/image-with-zoom"
-import RoomView from "@/components/ui/room-view"
 import { Card, CardContent } from "@/components/ui/card"
+
+const RoomView = lazy(() => import("@/components/ui/room-view"))
 
 type TabType = 'artwork' | 'room' | 'details'
 
@@ -19,19 +20,16 @@ export interface ArtworkTabsProps {
 }
 
 export default function ArtworkTabs({ title, description, size, src, className, activeView = 'artwork', onViewChange }: ArtworkTabsProps) {
-  const [activeTab, setActiveTab] = useState<TabType>(activeView as TabType)
-  const [showFullScreenRoom, setShowFullScreenRoom] = useState(activeView === 'room')
-
-  useEffect(() => {
-    setActiveTab(activeView as TabType);
-    setShowFullScreenRoom(activeView === 'room');
-  }, [activeView]);
+  const [activeTab, setActiveTab] = useState<TabType>('artwork')
+  const [showFullScreenRoom, setShowFullScreenRoom] = useState(false)
+  
 
   const tabs = [
     { id: 'artwork' as TabType, label: 'Artwork' },
     { id: 'room' as TabType, label: 'Room View' },
     { id: 'details' as TabType, label: 'Details' }
   ]
+
 
   return (
     <div className={cn("w-full", className)}>
@@ -66,7 +64,7 @@ export default function ArtworkTabs({ title, description, size, src, className, 
 
       <div className="min-h-[500px]">
         {activeTab === 'artwork' && (
-          <div className="rounded-md border">
+          <div className="rounded-md border bg-black min-h-[400px]">
             <ImageWithZoom 
               src={src}
               alt={title}
@@ -75,15 +73,17 @@ export default function ArtworkTabs({ title, description, size, src, className, 
         )}
 
         {showFullScreenRoom && (
-          <RoomView 
-            artworkSrc={src}
-            artworkAlt={title}
-            size={size}
-            onClose={() => {
-              setShowFullScreenRoom(false)
-              setActiveTab('artwork')
-            }}
-          />
+          <Suspense fallback={<div>Loading room view...</div>}>
+            <RoomView 
+              artworkSrc={src}
+              artworkAlt={title}
+              size={size}
+              onClose={() => {
+                setShowFullScreenRoom(false)
+                setActiveTab('artwork')
+              }}
+            />
+          </Suspense>
         )}
 
         {activeTab === 'details' && (

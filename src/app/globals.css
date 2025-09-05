@@ -92,7 +92,12 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
+  html {
+    background-color: #000000 !important; /* black */
   }
+  body {
+    background-color: #000000 !important; /* black */
+    @apply text-foreground;
+  }
+
 }
