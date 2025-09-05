@@ -87,7 +87,7 @@ export default function ArtworkTabs({ title, description, size, src, className, 
         )}
 
         {activeTab === 'details' && (
-          <Card>
+          <Card className="bg-black border-gray-700">
             <CardContent className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2 text-white">Description</h3>

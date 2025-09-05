@@ -41,9 +41,9 @@ export default function ImageWithZoom({
   }
 
   return (
-    <div className={cn("flex gap-4", className)}>
+    <div className={cn("relative", className)}>
       <div 
-        className="relative flex-1 overflow-hidden rounded-md border bg-black md:cursor-crosshair"
+        className="relative overflow-hidden rounded-md border bg-black md:cursor-crosshair"
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -60,7 +60,7 @@ export default function ImageWithZoom({
       </div>
       
       {isHovered && showZoomOnHover && (
-        <div className="relative w-[400px] h-[400px] border rounded-md overflow-hidden bg-black hidden md:block">
+        <div className="absolute top-0 right-[-420px] w-[400px] h-[400px] border rounded-md overflow-hidden bg-black hidden md:block">
           <Image
             src={src}
             fill
