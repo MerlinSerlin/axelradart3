@@ -102,9 +102,9 @@ export default function RoomView({ artworkSrc, artworkAlt, size, onClose }: Room
           />
         </div>
         
-        {/* Length dimension arrow */}
+        {/* Length dimension arrow - positioned below bench */}
         <div className="absolute left-1/2 transform -translate-x-1/2 w-80" 
-             style={{bottom: 'calc(37.5% + 30px)'}}>
+             style={{bottom: 'calc(37.5% - 90px)'}}>
           <div className="flex items-center w-full">
             <div className="flex flex-col items-center">
               <div className="w-px h-6 bg-gray-600"></div>
