@@ -2,6 +2,7 @@
 
 import { useState, useEffect, lazy, Suspense } from "react"
 import { cn } from "@/lib/utils"
+import { Eye } from "lucide-react"
 import ImageWithZoom from "@/components/ui/image-with-zoom"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -26,8 +27,8 @@ export default function ArtworkTabs({ title, description, size, src, className, 
 
   const tabs = [
     { id: 'artwork' as TabType, label: 'Artwork' },
-    { id: 'room' as TabType, label: 'Room View' },
-    { id: 'details' as TabType, label: 'Details' }
+    { id: 'details' as TabType, label: 'Details' },
+    { id: 'room' as TabType, label: 'View In Room', icon: <Eye size={16} /> }
   ]
 
 
@@ -57,7 +58,10 @@ export default function ArtworkTabs({ title, description, size, src, className, 
                 : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
             )}
           >
-            {tab.label}
+            <div className="flex items-center gap-2">
+              {tab.label}
+              {tab.icon}
+            </div>
           </button>
         ))}
       </div>
