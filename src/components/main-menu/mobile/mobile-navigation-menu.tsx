@@ -58,7 +58,7 @@ function MobileNavigationMenuContent() {
         {shouldShowBackArrow ? (
           <Button
             onClick={backAction}
-            className="p-0 bg-transparent hover:bg-transparent"
+            className="p-0 bg-transparent hover:bg-transparent focus:bg-transparent active:bg-transparent border-none focus:border-none active:border-none focus:ring-0"
             variant="ghost"
           >
             <ArrowLeft color="white" size={24} />
@@ -67,7 +67,7 @@ function MobileNavigationMenuContent() {
           <Drawer open={isMenuOpen} onOpenChange={setMenu} direction="left">
             <DrawerTrigger asChild>
               <Button
-                className="p-0 bg-transparent hover:bg-transparent"
+                className="p-0 bg-transparent hover:bg-transparent focus:bg-transparent active:bg-transparent border-none focus:border-none active:border-none focus:ring-0"
                 variant="ghost"
               >
                 <MenuIcon color="white" size={24} />
