@@ -67,7 +67,7 @@ function MobileNavigationMenuContent() {
           <Drawer open={isMenuOpen} onOpenChange={setMenu} direction="left">
             <DrawerTrigger asChild>
               <Button
-                className="p-0 bg-transparent hover:bg-transparent focus:ring-0 focus:outline-none"
+                className="p-0 bg-transparent hover:bg-transparent focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 ring-offset-transparent"
                 variant="ghost"
                 style={{ 
                   WebkitTapHighlightColor: 'transparent',
