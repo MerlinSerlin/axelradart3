@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export interface ImageWithZoomProps {
   src: string
@@ -21,6 +22,7 @@ export default function ImageWithZoom({
 }: ImageWithZoomProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isLoading, setIsLoading] = useState(true)
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!showZoomOnHover) return
@@ -49,12 +51,20 @@ export default function ImageWithZoom({
         onMouseLeave={handleMouseLeave}
       >
         <div className="relative h-[400px] w-full">
+          {isLoading && (
+            <Skeleton className="absolute inset-0 h-full w-full" />
+          )}
           <Image 
             src={src}
             fill
             alt={alt}
             style={{objectFit: 'cover'}}
-            className="transition-opacity duration-200"
+            className={cn(
+              "transition-opacity duration-200",
+              isLoading ? "opacity-0" : "opacity-100"
+            )}
+            onLoad={() => setIsLoading(false)}
+            onError={() => setIsLoading(false)}
           />
         </div>
       </div>
