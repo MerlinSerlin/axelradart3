@@ -24,11 +24,18 @@ export default function ArtworkTabs({ title, description, size, src, className, 
   const [activeTab, setActiveTab] = useState<TabType>('artwork')
   const [showFullScreenRoom, setShowFullScreenRoom] = useState(false)
   
+  // Pieces that are too big for room view
+  const isRoomViewDisabled = title === "Butterfly Effect (Interior View)" || title === "Butterfly Effect (Exterior View)"
 
   const tabs = [
     { id: 'artwork' as TabType, label: 'Artwork' },
     { id: 'details' as TabType, label: 'Details' },
-    { id: 'room' as TabType, label: 'View In Room', icon: <Eye size={16} /> }
+    { 
+      id: 'room' as TabType, 
+      label: 'View In Room', 
+      icon: <Eye size={16} />,
+      disabled: isRoomViewDisabled
+    }
   ]
 
 
@@ -38,7 +45,10 @@ export default function ArtworkTabs({ title, description, size, src, className, 
         {tabs.map((tab) => (
           <button
             key={tab.id}
+            disabled={tab.disabled}
             onClick={() => {
+              if (tab.disabled) return;
+              
               if (onViewChange) {
                 onViewChange(tab.id);
               } else {
@@ -53,7 +63,9 @@ export default function ArtworkTabs({ title, description, size, src, className, 
             }}
             className={cn(
               "px-6 py-3 text-sm font-medium border-b-2 transition-colors",
-              activeTab === tab.id
+              tab.disabled 
+                ? "border-transparent text-gray-400 cursor-not-allowed opacity-50"
+                : activeTab === tab.id
                 ? "border-blue-500 text-blue-600"
                 : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
             )}
