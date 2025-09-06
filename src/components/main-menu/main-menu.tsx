@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -22,6 +23,16 @@ import { DesktopNavigationMenu } from "./desktop-navigation-menu";
 import { MobileNavigationMenu } from "./mobile/mobile-navigation-menu";
 
 export default function MainMenu() {
+  const pathname = usePathname();
+  
+  // Fix iOS Safari fixed positioning bug - force layout recalculation after navigation
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.scrollTo(window.scrollX, window.scrollY);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
   return (
     <>
       <div className="hidden md:block">
