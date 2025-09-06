@@ -67,18 +67,14 @@ function MobileNavigationMenuContent() {
           <Drawer open={isMenuOpen} onOpenChange={setMenu} direction="left">
             <DrawerTrigger asChild>
               <Button
-                className="p-0 bg-transparent hover:bg-transparent"
+                className="p-0 bg-transparent hover:bg-transparent focus:ring-0 focus:outline-none"
                 variant="ghost"
+                style={{ 
+                  WebkitTapHighlightColor: 'transparent',
+                  outline: 'none'
+                }}
               >
-                <MenuIcon 
-                  color="white" 
-                  size={24} 
-                  style={{ 
-                    border: 'none', 
-                    outline: 'none',
-                    backgroundColor: 'transparent' 
-                  }}
-                />
+                <MenuIcon color="white" size={24} />
               </Button>
             </DrawerTrigger>
             <DrawerHeader className="flex flex-row justify-between items-center space-y-0 p-0">
