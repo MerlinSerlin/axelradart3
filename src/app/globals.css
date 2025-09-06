@@ -98,6 +98,7 @@
   body {
     background-color: #000000 !important; /* black */
     @apply text-foreground;
+    overscroll-behavior: none; /* Prevent iOS rubber band effect that causes fixed header bugs */
   }
 
 }
