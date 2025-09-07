@@ -1,10 +1,42 @@
 'use client'
 
-import CardWithImage from "@/components/ui/card-with-image";
+import Image from "next/image";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
 import { getCollection } from "@/data/art-data";
 import { useParams, useRouter, usePathname } from 'next/navigation';
 import { Suspense } from "react";
 import ArtworkModal from "@/components/ui/artwork-modal";
+
+function ImageCard({ image, onClick }: { image: any; onClick: () => void }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <div 
+      className="relative cursor-pointer hover:opacity-90 transition-opacity"
+      onClick={onClick}
+    >
+      <div className="relative w-full h-[50vh] rounded-md border bg-black overflow-hidden">
+        {isLoading && (
+          <Skeleton className="absolute inset-0 h-full w-full" />
+        )}
+        <Image
+          src={`/art-images${image.pathName}`}
+          alt={image.title}
+          fill
+          style={{ objectFit: 'cover' }}
+          className={cn(
+            "transition-opacity duration-200",
+            isLoading ? "opacity-0" : "opacity-100"
+          )}
+          onLoad={() => setIsLoading(false)}
+          onError={() => setIsLoading(false)}
+        />
+      </div>
+    </div>
+  );
+}
 
 function CollectionContent() {
   const collectionName = useParams()['collection-name'];
@@ -34,23 +66,20 @@ function CollectionContent() {
 
 
   return (
-    <div className="w-full h-lvh">
-      {collectionImages.map((image, index) => {
-        return (
-          <div 
-            key={index} 
-            className="relative flex flex-col items-center mb-8 cursor-pointer hover:opacity-90 transition-opacity"
-            onClick={() => handleImageClick(image)}
-          >
-            <CardWithImage  
-              src={`/art-images${image.pathName}`}
-              title=""
-              description=""
-              dimensions=""
-            />
-          </div>
-        );
-      })}
+    <div className="w-full min-h-screen">
+      <div className="max-w-6xl mx-auto px-8 py-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {collectionImages.map((image, index) => {
+            return (
+              <ImageCard
+                key={index}
+                image={image}
+                onClick={() => handleImageClick(image)}
+              />
+            );
+          })}
+        </div>
+      </div>
       
       {selectedImage && (
         <ArtworkModal
