@@ -63,7 +63,7 @@ export default function Page() {
           src={`/art-images${pathName}`}
         />
         
-        <CardFooter className="pt-6 mt-8 rounded-lg border bg-card text-card-foreground shadow-sm">
+        <CardFooter className="pt-6 mt-8 rounded-lg border bg-card text-card-foreground shadow-sm lg:hidden">
           <Link href="#" className="w-full">
             <Button className="w-full">
               Buy Prints
