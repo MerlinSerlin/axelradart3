@@ -17,7 +17,7 @@ function ImageCard({ image, onClick }: { image: any; onClick: () => void }) {
       className="relative cursor-pointer hover:opacity-90 transition-opacity"
       onClick={onClick}
     >
-      <div className="relative w-full h-[50vh] rounded-md border bg-black overflow-hidden">
+      <div className="relative w-full h-96 md:h-[50vh] rounded-md border bg-black overflow-hidden">
         {isLoading && (
           <Skeleton className="absolute inset-0 h-full w-full" />
         )}
