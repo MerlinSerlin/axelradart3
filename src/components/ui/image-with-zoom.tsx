@@ -44,13 +44,13 @@ export default function ImageWithZoom({
 
   return (
     <div className={cn("relative", className)}>
-      <div 
+      <div
         className="relative overflow-hidden rounded-md border bg-black md:cursor-crosshair"
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="relative w-full min-h-[70vh] max-h-[85vh] lg:min-h-[75vh] lg:max-h-[90vh] aspect-auto">
+        <div className="relative w-full h-[50vh] lg:min-h-[75vh] lg:max-h-[90vh] aspect-auto">
           {isLoading && (
             <Skeleton className="absolute inset-0 h-full w-full" />
           )}
@@ -58,9 +58,8 @@ export default function ImageWithZoom({
             src={src}
             fill
             alt={alt}
-            style={{objectFit: 'contain'}}
             className={cn(
-              "transition-opacity duration-200",
+              "transition-opacity duration-200 lg:object-contain object-cover",
               isLoading ? "opacity-0" : "opacity-100"
             )}
             onLoad={() => setIsLoading(false)}
@@ -70,7 +69,7 @@ export default function ImageWithZoom({
       </div>
       
       {isHovered && showZoomOnHover && (
-        <div className="absolute top-0 left-[calc(100%+1.5rem)] w-80 h-full border rounded-md overflow-hidden bg-black hidden lg:block z-10 shadow-lg">
+        <div className="absolute top-0 left-[calc(100%+1.5rem)] w-80 min-h-full border rounded-md overflow-hidden bg-black hidden lg:block z-20 shadow-lg">
           <Image
             src={src}
             fill
