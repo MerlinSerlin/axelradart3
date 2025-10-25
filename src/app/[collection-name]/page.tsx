@@ -66,7 +66,7 @@ function CollectionContent() {
 
 
   return (
-    <div className="w-full min-h-screen" style={{overscrollBehaviorY: 'contain'}}>
+    <div className="w-full min-h-screen" style={{overscrollBehaviorY: 'contain', touchAction: 'pan-y', WebkitOverflowScrolling: 'touch'}}>
       <div className="max-w-6xl mx-auto px-8 py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {collectionImages.map((image, index) => {
