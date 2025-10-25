@@ -9,9 +9,9 @@ import { useParams } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function Page() { 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   function capitalizeFirstLetterOfEachWord(input: string): string {
     return input
