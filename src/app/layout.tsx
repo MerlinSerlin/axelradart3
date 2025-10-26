@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import MainMenu from "@/components/main-menu/main-menu";
 import { Overlays } from "@/components/main-menu/overlays/overlays";
+import { CartProvider } from "@/contexts/cart-context";
+import ManageCartModal from "@/components/cart/manage-cart-modal";
+import AddToCartModal from "@/components/cart/add-to-cart-modal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +22,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={inter.className}>
-        <Overlays />
-        <MainMenu />
-        <div className="mt-16 md:mt-20">
-          {children}
-        </div>
+        <CartProvider>
+          <Overlays />
+          <MainMenu />
+          <div className="mt-16 md:mt-20">
+            {children}
+          </div>
+          <ManageCartModal />
+          <AddToCartModal />
+        </CartProvider>
         </body>
     </html>
   );

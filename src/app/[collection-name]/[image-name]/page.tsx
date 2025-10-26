@@ -6,9 +6,11 @@ import { getItem } from "@/data/art-data";
 import { CardFooter } from "@/components/ui/card";
 import Link from "next/link";
 import { useParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useCart } from '@/contexts/cart-context';
 
-export default function Page() { 
+export default function Page() {
+  const { openCartManagementModal } = useCart()
+
   // useEffect(() => {
   //   window.scrollTo(0, 0);
   // }, []);
@@ -57,7 +59,13 @@ export default function Page() {
     );
   }
 
-  const { title, description, size, pathName } = imageData;
+  const { title, description, size, pathName, eCommData } = imageData;
+
+  const handleBuyPrintsClick = () => {
+    if (eCommData) {
+      openCartManagementModal(title, pathName, eCommData)
+    }
+  }
 
   return (
     <div className="w-full min-h-screen p-6 bg-black">
@@ -71,14 +79,18 @@ export default function Page() {
           description={description}
           size={size}
           src={`/art-images${pathName}`}
+          pathName={pathName}
+          eCommData={eCommData}
         />
         
         <CardFooter className="pt-6 mt-8 rounded-lg border bg-card text-card-foreground shadow-sm lg:hidden">
-          <Link href="#" className="w-full">
-            <Button className="w-full">
-              Buy Prints
-            </Button>
-          </Link>
+          <Button
+            className="w-full"
+            onClick={handleBuyPrintsClick}
+            disabled={!eCommData}
+          >
+            Buy Prints
+          </Button>
         </CardFooter>
       </div>
     </div>

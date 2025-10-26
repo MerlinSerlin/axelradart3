@@ -3,8 +3,11 @@
 import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { ShoppingCart } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { useCart } from "@/contexts/cart-context"
+import { Button } from "@/components/ui/button"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -59,6 +62,9 @@ import { ContactOverlay }from "./overlays/contact-overlay"
 // ]
 
 export function DesktopNavigationMenu() {
+  const { openCart, getItemCount } = useCart()
+  const itemCount = getItemCount()
+
   return (
     <div className="flex items-center justify-between w-full px-6 py-4">
       <NavigationMenu>
@@ -102,15 +108,30 @@ export function DesktopNavigationMenu() {
         </NavigationMenuItem> */}
         </NavigationMenuList>
       </NavigationMenu>
-      <Link href="/" className="flex items-center">
-        <Image
-          src="/svgs/MA-logo.svg"
-          alt="Merle Axelrad Logo"
-          width={120}
-          height={60}
-          className="object-contain"
-        />
-      </Link>
+      <div className="flex items-center gap-4">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={openCart}
+          className="relative"
+        >
+          <ShoppingCart className="h-5 w-5" />
+          {itemCount > 0 && (
+            <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              {itemCount}
+            </span>
+          )}
+        </Button>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/svgs/MA-logo.svg"
+            alt="Merle Axelrad Logo"
+            width={120}
+            height={60}
+            className="object-contain"
+          />
+        </Link>
+      </div>
     </div>
   )
 }
