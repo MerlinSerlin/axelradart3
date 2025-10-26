@@ -6,6 +6,7 @@ import { Eye } from "lucide-react"
 import ImageWithZoom from "@/components/ui/image-with-zoom"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { useCart } from "@/contexts/cart-context"
 
 const RoomView = lazy(() => import("@/components/ui/room-view"))
 
@@ -16,17 +17,26 @@ export interface ArtworkTabsProps {
   description: string
   size: string
   src: string
+  pathName: string
+  eCommData?: any
   className?: string
   activeView?: string
   onViewChange?: (view: string) => void
 }
 
-export default function ArtworkTabs({ title, description, size, src, className, activeView = 'artwork', onViewChange }: ArtworkTabsProps) {
+export default function ArtworkTabs({ title, description, size, src, pathName, eCommData, className, activeView = 'artwork', onViewChange }: ArtworkTabsProps) {
   const [activeTab, setActiveTab] = useState<TabType>('artwork')
   const [showFullScreenRoom, setShowFullScreenRoom] = useState(false)
+  const { openCartManagementModal } = useCart()
   
   // Pieces that are too big for room view
   const isRoomViewDisabled = title === "Butterfly Effect (Interior View)" || title === "Butterfly Effect (Exterior View)"
+
+  const handleBuyPrintsClick = () => {
+    if (eCommData) {
+      openCartManagementModal(title, pathName, eCommData)
+    }
+  }
 
   const tabs = [
     { id: 'artwork' as TabType, label: 'Artwork' },
@@ -143,7 +153,11 @@ export default function ArtworkTabs({ title, description, size, src, className, 
                     </ul>
                   </div>
                   <div className="pt-4">
-                    <Button className="w-full">
+                    <Button
+                      className="w-full"
+                      onClick={handleBuyPrintsClick}
+                      disabled={!eCommData}
+                    >
                       Buy Prints
                     </Button>
                   </div>
