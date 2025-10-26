@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Overlays />
         <MainMenu />
-        <div className="mt-16 md:mt-0">
+        <div className="mt-16 md:mt-20">
           {children}
         </div>
         </body>

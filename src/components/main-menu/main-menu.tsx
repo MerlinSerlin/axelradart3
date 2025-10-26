@@ -8,7 +8,7 @@ import { MobileNavigationMenu } from "./mobile/mobile-navigation-menu";
 export default function MainMenu() {
   return (
     <>
-      <div className="hidden md:block">
+      <div className="hidden md:block fixed top-0 z-50 w-full bg-background">
         <DesktopNavigationMenu />
       </div>
       <div className="md:hidden relative">
