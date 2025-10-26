@@ -92,6 +92,7 @@ export default function ArtworkModal({ imageName, collectionName, onClose }: Art
             description={description}
             size={size}
             src={`/art-images${pathName}`}
+            pathName={pathName}
             activeView={currentView}
             onViewChange={handleViewChange}
           />
