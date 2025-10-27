@@ -68,12 +68,12 @@ export default function Page() {
   }
 
   return (
-    <div className="w-full min-h-screen p-6 bg-black">
-      <div className="max-w-6xl mx-auto">
+    <div className="w-full min-h-screen py-6 bg-black">
+      <div className="max-w-6xl mx-auto px-8">
         <div className="mb-8">
           <h1 className="text-2xl font-bold mb-2 text-white">{title}</h1>
         </div>
-        
+
         <ArtworkTabs
           title={title}
           description={description}

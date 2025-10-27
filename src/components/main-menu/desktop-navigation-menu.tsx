@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ShoppingCart } from "lucide-react"
+import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { useCart } from "@/contexts/cart-context"
@@ -64,65 +65,51 @@ import { ContactOverlay }from "./overlays/contact-overlay"
 export function DesktopNavigationMenu() {
   const { openCart, getItemCount } = useCart()
   const itemCount = getItemCount()
+  const pathname = usePathname()
+
+  // Extract collection name from pathname
+  const getCollectionDisplayName = () => {
+    const pathSegments = pathname.split('/')
+    if (pathSegments.length >= 2) {
+      const collectionSlug = pathSegments[1]
+      const collection = CollectionsData.find(c => c.href === `/${collectionSlug}`)
+      return collection?.title
+    }
+    return null
+  }
+
+  const currentCollectionName = getCollectionDisplayName()
 
   return (
-    <div className="flex items-center justify-between w-full px-6 py-4">
-      <NavigationMenu>
-        <NavigationMenuList>
-        <NavigationMenuItem>
-          <TheArtistOverlay />
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Collections</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {CollectionsData.map((item) => (
-                <ListItem
-                  key={item.title}
-                  title={item.title}
-                  href={item.href}
-                >
-                  {item.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <DialogDemo title="Prices"/>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <ContactOverlay />
-        </NavigationMenuItem>
-        {/* <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Prices
-            </NavigationMenuLink>
-          </Link>
-          <Link href="/prices" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Contact
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem> */}
-        </NavigationMenuList>
-      </NavigationMenu>
-      <div className="flex items-center gap-4">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={openCart}
-          className="relative"
-        >
-          <ShoppingCart className="h-5 w-5" />
-          {itemCount > 0 && (
-            <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
-              {itemCount}
+    <div className="w-full py-4">
+      <div className="max-w-6xl mx-auto px-8 flex items-center justify-between relative">
+        <div className="flex items-center">
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="pl-0">Collections</NavigationMenuTrigger>
+                <NavigationMenuContent className="md:left-0 md:right-auto">
+                  <ul className="grid w-[74vw] gap-4 p-6 grid-cols-2">
+                    {CollectionsData.map((item) => (
+                      <ListItem
+                        key={item.title}
+                        title={item.title}
+                        href={item.href}
+                        image={item.image}
+                      />
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          {currentCollectionName && (
+            <span className="text-sm text-muted-foreground ml-1">
+              {currentCollectionName}
             </span>
           )}
-        </Button>
-        <Link href="/" className="flex items-center">
+        </div>
+        <Link href="/" className="absolute left-[calc(50%-3rem)] -translate-x-1/8 flex items-center">
           <Image
             src="/svgs/MA-logo.svg"
             alt="Merle Axelrad Logo"
@@ -131,6 +118,34 @@ export function DesktopNavigationMenu() {
             className="object-contain"
           />
         </Link>
+        <div className="flex items-center gap-4">
+          <NavigationMenu>
+            <NavigationMenuList className="flex items-center gap-4">
+              <NavigationMenuItem>
+                <TheArtistOverlay />
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <DialogDemo title="Prices"/>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <ContactOverlay />
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={openCart}
+            className="relative"
+          >
+            <ShoppingCart className="h-5 w-5" />
+            {itemCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                {itemCount}
+              </span>
+            )}
+          </Button>
+        </div>
       </div>
     </div>
   )
@@ -138,23 +153,35 @@ export function DesktopNavigationMenu() {
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a"> & { image?: string }
+>(({ className, title, children, image, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none rounded-md p-6 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
+          <div className="flex gap-5 items-center">
+            {image && (
+              <div className="w-16 h-12 lg:w-20 lg:h-16 xl:w-24 xl:h-20 flex-shrink-0">
+                <Image
+                  src={`/art-images${image}`}
+                  alt={title || ''}
+                  width={112}
+                  height={80}
+                  className="object-cover rounded w-full h-full"
+                />
+              </div>
+            )}
+            <div className="flex-1">
+              <div className="text-sm font-medium leading-none">{title}</div>
+            </div>
+          </div>
         </a>
       </NavigationMenuLink>
     </li>
