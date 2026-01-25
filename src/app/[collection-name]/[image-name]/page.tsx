@@ -114,7 +114,7 @@ export default function Page() {
           eCommData={eCommData}
         />
         
-        <CardFooter className="pt-6 mt-8 rounded-lg border bg-card text-card-foreground shadow-sm lg:hidden">
+        <CardFooter className="pt-3 mt-3 rounded-lg border bg-card text-card-foreground shadow-sm lg:hidden">
           <Button
             className="w-full"
             onClick={handleBuyPrintsClick}
