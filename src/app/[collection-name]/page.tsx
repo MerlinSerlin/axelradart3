@@ -43,7 +43,7 @@ function CollectionContent() {
   const router = useRouter();
   const pathname = usePathname();
   const collectionImages = getCollection(collectionName.toString());
-  
+
   // Determine modal state directly from URL without local state
   const pathParts = pathname.split('/').filter(Boolean);
   const selectedImage = pathParts.length === 2 && pathParts[0] === collectionName ? pathParts[1] : null;
@@ -52,10 +52,14 @@ function CollectionContent() {
     return title.replace(/\s+/g, '-').toLowerCase();
   }
 
+  const formatCollectionName = (name: string) => {
+    return name.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+  }
+
   const handleImageClick = (image: any) => {
     // Store current scroll position before navigating away
     sessionStorage.setItem(`scroll-${collectionName}`, window.scrollY.toString());
-    
+
     const imageUrl = formatTitleForURL(image.title);
     router.push(`/${image.theme}/${imageUrl}`);
   };
@@ -67,7 +71,10 @@ function CollectionContent() {
 
   return (
     <div className="w-full min-h-screen" style={{overscrollBehaviorY: 'contain', touchAction: 'pan-y', WebkitOverflowScrolling: 'touch'}}>
-      <div className="max-w-6xl mx-auto px-8 py-8">
+      <div className="max-w-6xl mx-auto px-8 pt-2 pb-8 md:py-8">
+        <div className="mb-4 md:mb-8">
+          <h1 className="text-2xl font-bold mb-2 text-white">{formatCollectionName(collectionName.toString())}</h1>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {collectionImages.map((image, index) => {
             return (

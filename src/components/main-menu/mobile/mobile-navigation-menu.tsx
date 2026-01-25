@@ -13,14 +13,23 @@ import { MobileDrawer } from "./mobile-drawer";
 import { useMobileMenuStore } from "@/store/mobile-menu";
 import MobileNavigationMenuItems from "./mobile-navigation-menu-items";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { COLLECTION_NAMES } from "@/data/art-data";
 
 function MobileNavigationMenuContent() {
-    const { isMenuOpen, setMenu } = useMobileMenuStore();
+    const { isMenuOpen, setMenu, openDrawer, openMenu, shouldOpenDrawerOnHome, setShouldOpenDrawerOnHome } = useMobileMenuStore();
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const router = useRouter();
+
+    // Check if we should open the collections drawer on homepage
+    useEffect(() => {
+        if (pathname === '/' && shouldOpenDrawerOnHome) {
+            setShouldOpenDrawerOnHome(false);
+            openMenu();
+            openDrawer();
+        }
+    }, [pathname, shouldOpenDrawerOnHome, setShouldOpenDrawerOnHome, openMenu, openDrawer]);
     
     // Parse current route to determine navigation context
     const pathParts = pathname.split('/').filter(Boolean);
@@ -51,8 +60,11 @@ function MobileNavigationMenuContent() {
                 }, 50);
             };
         } else if (isCollectionPage) {
-            // From collection page -> back to home
-            return () => router.push('/');
+            // From collection page -> back to home with drawer open
+            return () => {
+                setShouldOpenDrawerOnHome(true);
+                router.push('/');
+            };
         }
         return null;
     };
@@ -65,15 +77,10 @@ function MobileNavigationMenuContent() {
         {shouldShowBackArrow ? (
           <Button
             onClick={backAction}
-            className="p-0 bg-transparent hover:bg-transparent flex items-center gap-2"
+            className="p-0 bg-transparent hover:bg-transparent"
             variant="ghost"
           >
             <ArrowLeft color="white" size={24} />
-            {isCollectionPage && (
-              <span className="text-white capitalize">
-                {collectionName.replace(/-/g, ' ')}
-              </span>
-            )}
           </Button>
         ) : (
           <Drawer open={isMenuOpen} onOpenChange={setMenu} direction="left">

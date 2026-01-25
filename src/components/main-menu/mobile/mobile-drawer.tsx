@@ -34,7 +34,7 @@ export function MobileDrawer() {
   // setDrawer is called with the new state (either true or false).
     
   return (
-    <Drawer onOpenChange={setDrawer}>
+    <Drawer open={isDrawerOpen} onOpenChange={setDrawer}>
       <DrawerTrigger className="w-full">
         <div className="w-full flex justify-between">
           <VisuallyHidden>
