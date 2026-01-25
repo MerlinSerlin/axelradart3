@@ -8,6 +8,15 @@ import { getCollection } from "@/data/art-data";
 import { useParams, useRouter, usePathname } from 'next/navigation';
 import { Suspense } from "react";
 import ArtworkModal from "@/components/ui/artwork-modal";
+import Link from "next/link";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 function ImageCard({ image, onClick }: { image: any; onClick: () => void }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -72,8 +81,20 @@ function CollectionContent() {
   return (
     <div className="w-full min-h-screen" style={{overscrollBehaviorY: 'contain', touchAction: 'pan-y', WebkitOverflowScrolling: 'touch'}}>
       <div className="max-w-6xl mx-auto px-8 pt-2 pb-8 md:py-8">
-        <div className="mb-4 md:mb-8">
-          <h1 className="text-2xl font-bold mb-2 text-white">{formatCollectionName(collectionName.toString())}</h1>
+        <div className="mb-4 md:mb-6">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/">Home</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>{formatCollectionName(collectionName.toString())}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {collectionImages.map((image, index) => {
