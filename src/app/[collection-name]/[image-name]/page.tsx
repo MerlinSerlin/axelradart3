@@ -7,6 +7,14 @@ import { CardFooter } from "@/components/ui/card";
 import Link from "next/link";
 import { useParams } from 'next/navigation';
 import { useCart } from '@/contexts/cart-context';
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export default function Page() {
   const { openCartManagementModal } = useCart()
@@ -40,9 +48,14 @@ export default function Page() {
   }
 
   const imageName = useParams()['image-name'].toString();
+  const collectionName = useParams()['collection-name'].toString();
   const formattedImageName = imageName.replace(/-/g, ' ');
   const finalTitleForLookup = capitalizeFirstLetterOfEachWord(formattedImageName);
-  
+
+  const formatCollectionName = (name: string) => {
+    return name.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+  }
+
   const imageData = getItem(finalTitleForLookup);
 
   if (!imageData) { 
@@ -70,8 +83,26 @@ export default function Page() {
   return (
     <div className="w-full min-h-screen pt-2 pb-6 md:py-6 bg-black">
       <div className="max-w-6xl mx-auto px-8">
-        <div className="mb-4 md:mb-8">
-          <h1 className="text-2xl font-bold mb-2 text-white">{title}</h1>
+        <div className="mb-4 md:mb-6">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/">Home</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href={`/${collectionName}`}>{formatCollectionName(collectionName)}</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>{title}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
         </div>
 
         <ArtworkTabs
