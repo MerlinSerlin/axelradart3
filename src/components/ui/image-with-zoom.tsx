@@ -45,27 +45,25 @@ export default function ImageWithZoom({
   return (
     <div className={cn("relative", className)}>
       <div
-        className="relative overflow-hidden rounded-md border bg-black md:cursor-crosshair"
+        className="relative w-full h-[50vh] lg:min-h-[75vh] lg:max-h-[90vh] overflow-hidden rounded-md border bg-black md:cursor-crosshair"
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="relative w-full h-[50vh] lg:min-h-[75vh] lg:max-h-[90vh] aspect-auto">
-          {isLoading && (
-            <Skeleton className="absolute inset-0 h-full w-full" />
+        {isLoading && (
+          <Skeleton className="absolute inset-0 h-full w-full" />
+        )}
+        <Image
+          src={src}
+          fill
+          alt={alt}
+          className={cn(
+            "transition-opacity duration-200 lg:object-contain object-cover",
+            isLoading ? "opacity-0" : "opacity-100"
           )}
-          <Image
-            src={src}
-            fill
-            alt={alt}
-            className={cn(
-              "transition-opacity duration-200 lg:object-contain object-cover",
-              isLoading ? "opacity-0" : "opacity-100"
-            )}
-            onLoad={() => setIsLoading(false)}
-            onError={() => setIsLoading(false)}
-          />
-        </div>
+          onLoad={() => setIsLoading(false)}
+          onError={() => setIsLoading(false)}
+        />
       </div>
       
       {isHovered && showZoomOnHover && (

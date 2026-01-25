@@ -36,7 +36,7 @@ export default function MainMenu() {
                 </span>
               )}
             </Button>
-            <Link href="/" className="flex items-center">
+            {/* <Link href="/" className="flex items-center">
               <Image
                 src="/svgs/MA-logo.svg"
                 alt="Merle Axelrad Logo"
@@ -44,7 +44,7 @@ export default function MainMenu() {
                 height={40}
                 className="object-contain"
               />
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

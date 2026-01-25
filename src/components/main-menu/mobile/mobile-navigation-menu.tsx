@@ -1,5 +1,5 @@
 import {
-    Drawer,   
+    Drawer,
     DrawerContent,
     DrawerDescription,
     DrawerHeader,
@@ -14,6 +14,7 @@ import { useMobileMenuStore } from "@/store/mobile-menu";
 import MobileNavigationMenuItems from "./mobile-navigation-menu-items";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { Suspense } from "react";
+import { COLLECTION_NAMES } from "@/data/art-data";
 
 function MobileNavigationMenuContent() {
     const { isMenuOpen, setMenu } = useMobileMenuStore();
@@ -23,10 +24,13 @@ function MobileNavigationMenuContent() {
     
     // Parse current route to determine navigation context
     const pathParts = pathname.split('/').filter(Boolean);
-    const isIndividualPiece = pathParts.length === 2;
     const currentView = searchParams.get('view');
     const collectionName = pathParts[0];
     const pieceName = pathParts[1];
+
+    // Check if we're on a valid collection page
+    const isCollectionPage = COLLECTION_NAMES.includes(collectionName as any);
+    const isIndividualPiece = pathParts.length === 2;
 
     // Determine what the back button should do
     const getBackAction = () => {
@@ -40,12 +44,15 @@ function MobileNavigationMenuContent() {
                 // Store scroll position before navigating
                 const scrollPosition = sessionStorage.getItem(`scroll-${collectionName}`) || '0';
                 router.push(`/${collectionName}`);
-                
+
                 // Restore scroll position after navigation
                 setTimeout(() => {
                     window.scrollTo(0, parseInt(scrollPosition));
                 }, 50);
             };
+        } else if (isCollectionPage) {
+            // From collection page -> back to home
+            return () => router.push('/');
         }
         return null;
     };
@@ -58,10 +65,15 @@ function MobileNavigationMenuContent() {
         {shouldShowBackArrow ? (
           <Button
             onClick={backAction}
-            className="p-0 bg-transparent hover:bg-transparent"
+            className="p-0 bg-transparent hover:bg-transparent flex items-center gap-2"
             variant="ghost"
           >
             <ArrowLeft color="white" size={24} />
+            {isCollectionPage && (
+              <span className="text-white capitalize">
+                {collectionName.replace(/-/g, ' ')}
+              </span>
+            )}
           </Button>
         ) : (
           <Drawer open={isMenuOpen} onOpenChange={setMenu} direction="left">
