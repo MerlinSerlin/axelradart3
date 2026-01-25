@@ -68,9 +68,9 @@ export default function Page() {
   }
 
   return (
-    <div className="w-full min-h-screen py-6 bg-black">
+    <div className="w-full min-h-screen pt-2 pb-6 md:py-6 bg-black">
       <div className="max-w-6xl mx-auto px-8">
-        <div className="mb-8">
+        <div className="mb-4 md:mb-8">
           <h1 className="text-2xl font-bold mb-2 text-white">{title}</h1>
         </div>
 
