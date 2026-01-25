@@ -23,45 +23,6 @@ import { DialogDemo } from "../ui/dialog-demo"
 import { TheArtistOverlay } from "./overlays/the-artist-overlay"
 import { ContactOverlay }from "./overlays/contact-overlay"
 
-// const collectionsData: { title: string; href: string; description: string }[] = [
-//   {
-//     title: "Rocks and Water",
-//     href: "/collections/rocks_and_water",
-//     description:
-//       "A modal dialog that interrupts the user with important content and expects a response.",
-//   },
-//   {
-//     title: "Rocks and Water",
-//     href: "/collections/rocks_and_water",
-//     description:
-//       "A modal dialog that interrupts the user with important content and expects a response.",
-//   },
-//   {
-//     title: "Rocks and Water",
-//     href: "/collections/rocks_and_water",
-//     description:
-//       "A modal dialog that interrupts the user with important content and expects a response.",
-//   },
-//   {
-//     title: "Rocks and Water",
-//     href: "/collections/rocks_and_water",
-//     description:
-//       "A modal dialog that interrupts the user with important content and expects a response.",
-//   },
-//   {
-//     title: "Rocks and Water",
-//     href: "/collections/rocks_and_water",
-//     description:
-//       "A modal dialog that interrupts the user with important content and expects a response.",
-//   },
-//   {
-//     title: "Rocks and Water",
-//     href: "/collections/rocks_and_water",
-//     description:
-//       "A modal dialog that interrupts the user with important content and expects a response.",
-//   },
-// ]
-
 export function DesktopNavigationMenu() {
   const { openCart, getItemCount } = useCart()
   const itemCount = getItemCount()
@@ -109,7 +70,7 @@ export function DesktopNavigationMenu() {
             </span>
           )}
         </div>
-        <Link href="/" className="absolute left-[calc(50%-3rem)] -translate-x-1/8 flex items-center">
+        {/* <Link href="/" className="absolute left-[calc(50%-3rem)] -translate-x-1/8 flex items-center">
           <Image
             src="/svgs/MA-logo.svg"
             alt="Merle Axelrad Logo"
@@ -117,7 +78,7 @@ export function DesktopNavigationMenu() {
             height={60}
             className="object-contain"
           />
-        </Link>
+        </Link> */}
         <div className="flex items-center gap-4">
           <NavigationMenu>
             <NavigationMenuList className="flex items-center gap-4">

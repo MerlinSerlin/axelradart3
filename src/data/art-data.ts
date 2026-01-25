@@ -2224,6 +2224,15 @@ export const artData = {
 };
 
 
+export const COLLECTION_NAMES = [
+  "hills-and-mountains",
+  "trees",
+  "rocks-and-water",
+  "aerial",
+  "coastal",
+  "other-works"
+] as const;
+
 export const getThemeImages = () => {
   return artData.items.filter(item => item.isThemeImage);
 }
