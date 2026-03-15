@@ -7,6 +7,7 @@ import ImageWithZoom from "@/components/ui/image-with-zoom"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useCart } from "@/contexts/cart-context"
+import type { ECommData } from "@/data/art-data"
 
 const RoomView = lazy(() => import("@/components/ui/room-view"))
 
@@ -18,7 +19,7 @@ export interface ArtworkTabsProps {
   size: string
   src: string
   pathName: string
-  eCommData?: any
+  eCommData?: ECommData
   className?: string
   activeView?: string
   onViewChange?: (view: string) => void
