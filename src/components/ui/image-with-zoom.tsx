@@ -27,7 +27,7 @@ export default function ImageWithZoom({
   src,
   alt,
   className,
-  zoomScale = 2.5,
+  zoomScale = 4,
   showZoomOnHover = true,
   zoomOpen,
   onZoomClose,
