@@ -5,7 +5,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ArtworkTabs from "@/components/ui/artwork-tabs";
-import { getItem } from "@/data/art-data";
+import { getItemBySlug, getItem } from "@/data/art-data";
+import { capitalizeFirstLetterOfEachWord } from "@/lib/formatting";
 import { CardFooter } from "@/components/ui/card";
 import Link from "next/link";
 
@@ -20,20 +21,9 @@ export default function ArtworkModal({ imageName, collectionName, onClose }: Art
   const searchParams = useSearchParams();
   const currentView = searchParams.get('view') || 'artwork';
 
-  function capitalizeFirstLetterOfEachWord(input: string): string {
-    return input
-      .split(' ')
-      .map(word => {
-        if (word.startsWith('(')) {
-          return '(' + word.charAt(1).toUpperCase() + word.slice(2);
-        }
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      .join(' ');
-  }
-
-  const formattedImageName = imageName.replace(/-/g, ' ');
-  const imageData = getItem(capitalizeFirstLetterOfEachWord(formattedImageName));
+  // Try slug-based lookup first, fall back to title reverse-engineering
+  const imageData = getItemBySlug(imageName)
+    || getItem(capitalizeFirstLetterOfEachWord(imageName.replace(/-/g, ' ')));
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {

@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { cartUtils, type Cart, type CartItem } from '../components/cart/cart-utils'
+import type { ECommData } from '@/data/art-data'
 
 interface CartContextType {
   cart: Cart
@@ -10,11 +11,11 @@ interface CartContextType {
   cartManagementModalData: {
     artworkTitle: string
     artworkImagePath: string
-    eCommData: any
+    eCommData: ECommData
   } | null
   openCart: () => void
   closeCart: () => void
-  openCartManagementModal: (artworkTitle: string, artworkImagePath: string, eCommData: any) => void
+  openCartManagementModal: (artworkTitle: string, artworkImagePath: string, eCommData: ECommData) => void
   closeCartManagementModal: () => void
   addItem: (item: Omit<CartItem, 'id' | 'quantity'>) => void
   removeItem: (itemId: string) => void
@@ -32,7 +33,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [cartManagementModalData, setCartManagementModalData] = useState<{
     artworkTitle: string
     artworkImagePath: string
-    eCommData: any
+    eCommData: ECommData
   } | null>(null)
 
   // Load cart from localStorage on mount
@@ -43,7 +44,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const openCart = () => setIsCartOpen(true)
   const closeCart = () => setIsCartOpen(false)
 
-  const openCartManagementModal = (artworkTitle: string, artworkImagePath: string, eCommData: any) => {
+  const openCartManagementModal = (artworkTitle: string, artworkImagePath: string, eCommData: ECommData) => {
     setCartManagementModalData({ artworkTitle, artworkImagePath, eCommData })
     setIsCartManagementModalOpen(true)
   }

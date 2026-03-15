@@ -1,6 +1,3 @@
-import { Button } from "@/components/ui/button";
-import MainMenu from "@/components/main-menu/main-menu";
-import CardWithImage from "@/components/ui/card-with-image";
 import Image from "next/image";
 
 export default function Home() { 

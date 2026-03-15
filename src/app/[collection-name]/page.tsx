@@ -1,14 +1,8 @@
-'use client'
-
-import Image from "next/image";
-import { useState } from "react";
-import { cn } from "@/lib/utils";
-import { Skeleton } from "@/components/ui/skeleton";
-import { getCollection } from "@/data/art-data";
-import { useParams, useRouter, usePathname } from 'next/navigation';
-import { Suspense } from "react";
-import ArtworkModal from "@/components/ui/artwork-modal";
+import { Metadata } from "next";
 import Link from "next/link";
+import { getCollection, COLLECTION_NAMES } from "@/data/art-data";
+import { formatCollectionName } from "@/lib/formatting";
+import CollectionContent from "./collection-content";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -18,65 +12,30 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-function ImageCard({ image, onClick }: { image: any; onClick: () => void }) {
-  const [isLoading, setIsLoading] = useState(true);
-
-  return (
-    <div 
-      className="relative cursor-pointer hover:opacity-90 transition-opacity"
-      onClick={onClick}
-    >
-      <div className="relative w-full h-[50vh] rounded-md border bg-black overflow-hidden">
-        {isLoading && (
-          <Skeleton className="absolute inset-0 h-full w-full" />
-        )}
-        <Image
-          src={`/art-images${image.pathName}`}
-          alt={image.title}
-          fill
-          style={{ objectFit: 'cover' }}
-          className={cn(
-            "transition-opacity duration-200",
-            isLoading ? "opacity-0" : "opacity-100"
-          )}
-          onLoad={() => setIsLoading(false)}
-          onError={() => setIsLoading(false)}
-        />
-      </div>
-    </div>
-  );
+interface PageProps {
+  params: Promise<{ "collection-name": string }>;
 }
 
-function CollectionContent() {
-  const collectionName = useParams()['collection-name'];
-  const router = useRouter();
-  const pathname = usePathname();
-  const collectionImages = getCollection(collectionName.toString());
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { "collection-name": collectionName } = await params;
+  const displayName = formatCollectionName(collectionName);
 
-  // Determine modal state directly from URL without local state
-  const pathParts = pathname.split('/').filter(Boolean);
-  const selectedImage = pathParts.length === 2 && pathParts[0] === collectionName ? pathParts[1] : null;
-
-  const formatTitleForURL = (title: string) => {
-    return title.replace(/\s+/g, '-').toLowerCase();
-  }
-
-  const formatCollectionName = (name: string) => {
-    return name.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
-  }
-
-  const handleImageClick = (image: any) => {
-    // Store current scroll position before navigating away
-    sessionStorage.setItem(`scroll-${collectionName}`, window.scrollY.toString());
-
-    const imageUrl = formatTitleForURL(image.title);
-    router.push(`/${image.theme}/${imageUrl}`);
+  return {
+    title: displayName,
+    description: `Browse the ${displayName} collection by Merle Axelrad. Original mixed media collage artwork available as fine art prints.`,
   };
+}
 
-  const handleCloseModal = () => {
-    router.push(`/${collectionName}`, { scroll: false });
-  };
+export function generateStaticParams() {
+  return COLLECTION_NAMES.map((name) => ({
+    "collection-name": name,
+  }));
+}
 
+export default async function Page({ params }: PageProps) {
+  const { "collection-name": collectionName } = await params;
+  const collectionImages = getCollection(collectionName);
+  const displayName = formatCollectionName(collectionName);
 
   return (
     <div className="w-full min-h-screen" style={{overscrollBehaviorY: 'contain', touchAction: 'pan-y', WebkitOverflowScrolling: 'touch'}}>
@@ -91,39 +50,16 @@ function CollectionContent() {
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage>{formatCollectionName(collectionName.toString())}</BreadcrumbPage>
+                <BreadcrumbPage>{displayName}</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {collectionImages.map((image, index) => {
-            return (
-              <ImageCard
-                key={index}
-                image={image}
-                onClick={() => handleImageClick(image)}
-              />
-            );
-          })}
-        </div>
-      </div>
-      
-      {selectedImage && (
-        <ArtworkModal
-          imageName={selectedImage}
-          collectionName={collectionName.toString()}
-          onClose={handleCloseModal}
+        <CollectionContent
+          collectionName={collectionName}
+          collectionImages={collectionImages}
         />
-      )}
+      </div>
     </div>
-  );
-}
-
-export default function Page() {
-  return (
-    <Suspense fallback={<div className="w-full h-lvh bg-black"></div>}>
-      <CollectionContent />
-    </Suspense>
   );
 }

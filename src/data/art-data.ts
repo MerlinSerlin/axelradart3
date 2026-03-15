@@ -2,6 +2,7 @@ export const artData = {
   items: [
     {
       title: "Bay Area Foothills",
+      slug: "bay-area-foothills",
       description: "This is one of a three-piece series commissioned by the city of San Francisco for the Laguna Honda Healthcare Facility, a long-term healthcare facility. Located in the entry lobby, these collages celebrate the San Francisco Bay.",
       theme: "hills-and-mountains",
       pathName: "/BayArea600w.jpg",
@@ -36,6 +37,7 @@ export const artData = {
     },
     {
       title: "Birches",
+      slug: "birches",
       description: "This was a private commission.  It is based on photos provided by the client of a favorite park in their home state.",
       theme: "trees",
       pathName: "/Birches600w.jpg",
@@ -70,6 +72,7 @@ export const artData = {
     },
     {
       title: "Bliss Park",
+      slug: "bliss-park",
       description: "This was a private commission.  It is based on photos provided by the client of a favorite park in their home state.",
       theme: "rocks-and-water",
       pathName: "/Bliss_Park_600w.jpg",
@@ -104,6 +107,7 @@ export const artData = {
     },
     {
       title: "Branch 2",
+      slug: "branch-2",
       description: "Despite clearly representing a branch, this piece also presents itself as an abstract image.",
       theme: "trees",
       pathName: "/Branch_2_600w.jpg",
@@ -138,6 +142,7 @@ export const artData = {
     },
     {
       title: "Branching Out",
+      slug: "branching-out",
       description: "This was a private commission.  It was designed specifically to go over the fireplace mantle in the client’s home.",
       theme: "trees",
       pathName: "/Branching_Out_600w.jpg",
@@ -174,6 +179,7 @@ export const artData = {
     },
     {
       title: "Butterfly Effect (Exterior View)",
+      slug: "butterfly-effect-(exterior-view)",
       description: "Commissioned as public art by Los Angeles County, this suspended sculpture hangs in the entry lobby of an outpatient mental health clinic. It includes 10,000 monarch butterflies and 1,000 leaves suspended from 6 metal branches.",
       theme: "other-works",
       pathName: "/Butterfly_Effect_From_Exterior.jpeg",
@@ -191,6 +197,7 @@ export const artData = {
     },
     {
       title: "Butterfly Effect (Interior View)",
+      slug: "butterfly-effect-(interior-view)",
       description: "Commissioned as public art by Los Angeles County, this suspended sculpture hangs in the entry lobby of an outpatient mental health clinic. It includes 10,000 monarch butterflies and 1,000 leaves suspended from 6 metal branches.",
       theme: "other-works",
       pathName: "/Butterfly_Effect_Interior.jpeg",
@@ -208,6 +215,7 @@ export const artData = {
     },
     {
       title: "California Ricelands",
+      slug: "california-ricelands",
       description: "Commissioned by the California Rice Commission, this collage depicts the flooded rice fields in the California-Delta area. This image was used as part of the Rice Commission’s branding program.",
       theme: "aerial",
       pathName: "/California_Ricelands600w.jpg",
@@ -246,6 +254,7 @@ export const artData = {
     },
     {
       title: "Central Coast Foothills",
+      slug: "central-coast-foothills",
       description: "Location - California Environmental Protection Agency's headquarters Part of an eight-piece series commissioned for Cal/EPA’s headquarters, each collage represents a geographic feature unique to California.  The collages are each on their own floor, arranged vertically by elevation - with Mt. Shasta on the top floor and Monterey Bay Canyon on the lowest floor.",
       theme: "hills-and-mountains",
       pathName: "/Central_Coast_Foothills_600w.jpg",
@@ -282,6 +291,7 @@ export const artData = {
     },
     {
       title: "Central Coast",
+      slug: "central-coast",
       description: "Location - California Environmental Protection Agency's headquarters Part of an eight-piece series commissioned for Cal/EPA’s headquarters, each collage represents a geographic feature unique to California.  The collages are each on their own floor, arranged vertically by elevation - with Mt. Shasta on the top floor and Monterey Bay Canyon on the lowest floor.",
       theme: "aerial",
       pathName: "/Central_Coast_600w.jpg",
@@ -316,6 +326,7 @@ export const artData = {
     },
     {
       title: "Cliffs At Land's End",
+      slug: "cliffs-at-land's-end",
       description: "This is one of a three-piece series commissioned by the city of San Francisco for the Laguna Honda Healthcare Facility, a long-term healthcare facility. Located in the entry lobby, these collages celebrate the San Francisco Bay.",
       theme: "coastal",
       pathName: "/Cliffs_At_Lands_End_600w.jpg",
@@ -350,6 +361,7 @@ export const artData = {
     },
     {
       title: "Coast",
+      slug: "coast",
       description: "This is one of four pieces created for “12 Voices”, an international juried show that opened at the Dennos Art Museum in Traverse City, Michigan in September of 2008. As the show’s curator put it, “The 12 Voices’ exhibition will give viewers a rare, in-depth look at twelve of the best fabric artists working today.” All four collages have been purchased by private individuals.",
       theme: "coastal",
       pathName: "/Coast600w.jpg",
@@ -384,6 +396,7 @@ export const artData = {
     },
     {
       title: "Coast 2",
+      slug: "coast-2",
       description: "This was commissioned by a private collector and depicts the sweep of cliffs separating ocean from bay at Point Reyes.",
       theme: "coastal",
       pathName: "/Coast_2.jpg",
@@ -418,6 +431,7 @@ export const artData = {
     },
     {
       title: "Delta",
+      slug: "delta",
       description: "Location - California Environmental Protection Agency's headquarters Part of an eight-piece series commissioned for Cal/EPA’s headquarters, each collage represents a geographic feature unique to California.  The collages are each on their own floor, arranged vertically by elevation - with Mt. Shasta on the top floor and Monterey Bay Canyon on the lowest floor.",
       theme: "aerial",
       pathName: "/Delta600w.jpg",
@@ -454,6 +468,7 @@ export const artData = {
     },
     {
       title: "Eucalyptus",
+      slug: "eucalyptus",
       description: "This is part of a two-piece series commissioned for a private home in San Francisco. The two collages are located on either side of a fireplace.",
       theme: "trees",
       pathName: "/eucalyptus_I_600w.jpg",
@@ -488,6 +503,7 @@ export const artData = {
     },
     {
       title: "Eucalyptus II",
+      slug: "eucalyptus-ii",
       description: "This is part of a two-piece series commissioned for a private home in San Francisco. The two collages are located on either side of a fireplace.",
       theme: "trees",
       pathName: "/eucalyptus_2_600w.jpg",
@@ -522,6 +538,7 @@ export const artData = {
     },
     {
       title: "Fields",
+      slug: "fields",
       description: "This is one of four pieces created for “12 Voices”, an international juried show that opened at the Dennos Art Museum in Traverse City, Michigan in September of 2008. As the show’s curator put it, “The 12 Voices’ exhibition will give viewers a rare, in-depth look at twelve of the best fabric artists working today.” All four collages have been purchased by private individuals.",
       theme: "aerial",
       pathName: "/Fields600w.jpg",
@@ -556,6 +573,7 @@ export const artData = {
     },
     {
       title: "Foothills",
+      slug: "foothills",
       description: "This is one of four pieces created for “12 Voices”, an international juried show that opened at the Dennos Art Museum in Traverse City, Michigan in September of 2008. As the show’s curator put it, “The 12 Voices’ exhibition will give viewers a rare, in-depth look at twelve of the best fabric artists working today.” All four collages have been purchased by private individuals.",
       theme: "hills-and-mountains",
       pathName: "/Foothills600w.jpg",
@@ -590,6 +608,7 @@ export const artData = {
     },
     {
       title: "Foothills 2",
+      slug: "foothills-2",
       description: "This piece was commissioned for a private home to go over the fireplace mantle. Because of the small size of this original, the threads and textures are unusually apparent, especially in enlargements.",
       theme: "hills-and-mountains",
       pathName: "/Foothills_2_600w.jpg",
@@ -624,6 +643,7 @@ export const artData = {
     },
     {
       title: "Foothills In Spring",
+      slug: "foothills-in-spring",
       description: "This was a private commission.  It is based on the foothills surrounding the owner’s previous home.",
       theme: "hills-and-mountains",
       pathName: "/Foothills_in_Spring_600w.jpg",
@@ -658,6 +678,7 @@ export const artData = {
     },
     {
       title: "Green Water",
+      slug: "green-water",
       description: "This is studio work, focusing on the meeting of rocks and water. Because of the small size of this original, the threads and textures are unusually apparent, especially in enlargements. It is currently located in a private home.",
       theme: "rocks-and-water",
       pathName: "/Green_Water_600w.jpg",
@@ -692,6 +713,7 @@ export const artData = {
     },
     {
       title: "Havasu Creek",
+      slug: "havasu-creek",
       description: "This was a private commission.  It is based on photos provided by the client, an avid rafter, depicting a side canyon of the Grand Canyon.",
       theme: "rocks-and-water",
       pathName: "/Havasu600w.jpg",
@@ -727,6 +749,7 @@ export const artData = {
     },
     {
       title: "Headwater Redwoods",
+      slug: "headwater-redwoods",
       description: "Location - California Environmental Protection Agency's headquarters Part of an eight-piece series commissioned for Cal/EPA’s headquarters, each collage represents a geographic feature unique to California.  The collages are each on their own floor, arranged vertically by elevation - with Mt. Shasta on the top floor and Monterey Bay Canyon on the lowest floor.",
       theme: "trees",
       pathName: "/Headwater_Redwoods600w.jpg",
@@ -761,6 +784,7 @@ export const artData = {
     },
     {
       title: "Jomolhari",
+      slug: "jomolhari",
       description: "Jomolhari, sometimes known as \"the bride of Kangchenjunga,\" is a mountain in the Himalayas. This striking image is based on  a photo taken by the client's husband when the two were trekking in Bhutan at 18,000 feet.",
       theme: "hills-and-mountains",
       pathName: "/Jomolhari600w.jpg",
@@ -795,6 +819,7 @@ export const artData = {
     },
     {
       title: "Joshua Tree",
+      slug: "joshua-tree",
       description: "Location - California Environmental Protection Agency's headquarters Part of an eight-piece series commissioned for Cal/EPA’s headquarters, each collage represents a geographic feature unique to California.  The collages are each on their own floor, arranged vertically by elevation - with Mt. Shasta on the top floor and Monterey Bay Canyon on the lowest floor.",
       theme: "hills-and-mountains",
       pathName: "/Joshua_Tree_600w.jpg",
@@ -829,6 +854,7 @@ export const artData = {
     },
     {
       title: "Lake Tahoe",
+      slug: "lake-tahoe",
       description: "Location - California Environmental Protection Agency's headquarters Part of an eight-piece series commissioned for Cal/EPA’s headquarters, each collage represents a geographic feature unique to California.  The collages are each on their own floor, arranged vertically by elevation - with Mt. Shasta on the top floor and Monterey Bay Canyon on the lowest floor.",
       theme: "rocks-and-water",
       pathName: "/Lake_Tahoe_600w.jpg",
@@ -863,6 +889,7 @@ export const artData = {
     },
     {
       title: "Lake Tahoe 2",
+      slug: "lake-tahoe-2",
       description: "This is studio work, focusing on the meeting of rocks and water. Because of the small size of this original, the threads and textures are unusually apparent.",
       theme: "rocks-and-water",
       pathName: "/Lake_Tahoe_2_600w.jpg",
@@ -897,6 +924,7 @@ export const artData = {
     },
     {
       title: "Lake Tahoe 3",
+      slug: "lake-tahoe-3",
       description: "Original Sewn Fabric Collage 14\" x 18\" This is studio work, focusing on the meeting of rocks and water. Because of the small size of this original, the threads and textures are unusually apparent.",
       theme: "rocks-and-water",
       pathName: "/Lake_Tahoe_3_600w.jpg",
@@ -931,6 +959,7 @@ export const artData = {
     },
     {
       title: "Little Sur River",
+      slug: "little-sur-river",
       description: "This is studio work, focusing on the meeting of ocean and river at California’s legendary Big Sur Coast.",
       theme: "coastal",
       pathName: "/Little_Sur_River_600w.jpg",
@@ -967,6 +996,7 @@ export const artData = {
     },
     {
       title: "Madison Range",
+      slug: "madison-range",
       description: "This piece was commissioned to hang over a huge stone fireplace mantel in a private “cabin” in Montana. It depicts the local mountain range.",
       theme: "hills-and-mountains",
       pathName: "/Madison_Range_600w.jpg",
@@ -1005,6 +1035,7 @@ export const artData = {
     },
     {
       title: "Marin Headlands",
+      slug: "marin-headlands",
       description: "This is one of a three-piece series commissioned by the city of San Francisco for the Laguna Honda Healthcare Facility, a long-term healthcare facility. Located in the entry lobby, these collages celebrate the San Francisco Bay.",
       theme: "coastal",
       pathName: "/Marin_Headlands_600w.jpg",
@@ -1041,6 +1072,7 @@ export const artData = {
     },
     {
       title: "Mission Column",
+      slug: "mission-column",
       description: "This collage was the first architectural element created by the artist.  It is the precursor to much larger works, Mission Espada and Mission San Jose. Because of the small size of this original, the threads and textures are unusually apparent.",
       theme: "other-works",
       pathName: "/Mission_Column_600w.jpg",
@@ -1075,6 +1107,7 @@ export const artData = {
     },
     {
       title: "Mission Espada",
+      slug: "mission-espada",
       description: "This is one of two collages commissioned by an energy company (NuStar Energy) in San Antonio, Texas. They requested San Antonio landmarks.  The two pieces each depict one of the missions in that city.",
       theme: "other-works",
       pathName: "/Mission_Espada_600w.jpg",
@@ -1109,6 +1142,7 @@ export const artData = {
     },
     {
       title: "Mission San Jose",
+      slug: "mission-san-jose",
       description: "This is one of two collages commissioned by an energy company (NuStar Energy) in San Antonio, Texas. They requested San Antonio landmarks.  The two pieces each depict one of the missions in that city.",
       theme: "other-works",
       pathName: "/Mission_San_Jose_600w.jpg",
@@ -1146,6 +1180,7 @@ export const artData = {
     },
     {
       title: "Monterey Bay Canyon",
+      slug: "monterey-bay-canyon",
       description: "Location - California Environmental Protection Agency's headquarters Part of an eight-piece series commissioned for Cal/EPA’s headquarters, each collage represents a geographic feature unique to California.  The collages are each on their own floor, arranged vertically by elevation - with Mt. Shasta on the top floor and Monterey Bay Canyon on the lowest floor.",
       theme: "rocks-and-water",
       pathName: "/Monterey_Bay_600w.jpg",
@@ -1180,6 +1215,7 @@ export const artData = {
     },
     {
       title: "Mount Everest",
+      slug: "mount-everest",
       description: "This was a private commission.  It is based on photos provided by the client from his recent climbing expedition on the mountain.",
       theme: "hills-and-mountains",
       pathName: "/Mount_Everest_600w.jpg",
@@ -1214,6 +1250,7 @@ export const artData = {
     },
     {
       title: "Mount Shasta",
+      slug: "mount-shasta",
       description: "Location - California Environmental Protection Agency's headquarters Part of an eight-piece series commissioned for Cal/EPA’s headquarters, each collage represents a geographic feature unique to California.  The collages are each on their own floor, arranged vertically by elevation - with Mt. Shasta on the top floor and Monterey Bay Canyon on the lowest floor.",
       theme: "hills-and-mountains",
       pathName: "/Mount_Shasta_600w.jpg",
@@ -1248,6 +1285,7 @@ export const artData = {
     },
     {
       title: "Redwoods 2",
+      slug: "redwoods-2",
       description: "Redwoods 2 was privately commissioned by a collector who wanted a piece to reflect the area where they grew up.",
       theme: "trees",
       pathName: "/Redwoods_2_600w.jpg",
@@ -1286,6 +1324,7 @@ export const artData = {
     },
     {
       title: "Reflections",
+      slug: "reflections",
       description: "Despite clearly representing water, this piece also presents itself as an abstract image.",
       theme: "rocks-and-water",
       pathName: "/Reflections600w.jpg",
@@ -1321,6 +1360,7 @@ export const artData = {
     },
     {
       title: "Reflections 2",
+      slug: "reflections-2",
       description: "Despite clearly representing water, this piece also presents itself as an abstract image.",
       theme: "rocks-and-water",
       pathName: "/Reflections_2_600w.jpg",
@@ -1355,6 +1395,7 @@ export const artData = {
     },
     {
       title: "River",
+      slug: "river",
       description: "This is one of four pieces created for “12 Voices”, an international juried show that opened at the Dennos Art Museum in Traverse City, Michigan in September of 2008. As the show’s curator put it, “The 12 Voices’ exhibition will give viewers a rare, in-depth look at twelve of the best fabric artists working today.” All four collages have been purchased by private individuals.",
       theme: "rocks-and-water",
       pathName: "/River600w.jpg",
@@ -1389,6 +1430,7 @@ export const artData = {
     },
     {
       title: "River 2",
+      slug: "river-2",
       description: "This collage was a private commission.  The original is located in the home’s entryway.",
       theme: "rocks-and-water",
       pathName: "/River_2_600w.jpg",
@@ -1423,6 +1465,7 @@ export const artData = {
     },
     {
       title: "River 3",
+      slug: "river-3",
       description: "This collage was a private commission.  The original is located in the home’s entryway.",
       theme: "rocks-and-water",
       pathName: "/River_3_600w.jpg",
@@ -1457,6 +1500,7 @@ export const artData = {
     },
     {
       title: "River 4",
+      slug: "river-4",
       description: "This is a studio piece and explores a favorite subject - rocks and water. It depicts the three worlds that can come together at one time - the above-water world, the rocks below the water, and the reflections.",
       theme: "rocks-and-water",
       pathName: "/River_4_600w.jpg",
@@ -1492,6 +1536,7 @@ export const artData = {
     },
     {
       title: "River 5",
+      slug: "river-5",
       description: "This is a studio piece and explores a favorite subject - rocks and water. It depicts the three worlds that can come together at one time - the above-water world, the rocks below the water, and the reflections.",
       theme: "rocks-and-water",
       pathName: "/River_5_600w.jpg",
@@ -1528,6 +1573,7 @@ export const artData = {
     },
     {
       title: "River Bend",
+      slug: "river-bend",
       description: "This was a private commission. Having previously lived in Sacramento, this family had recently moved to Southern California. They missed Sacramento and wanted artwork to remind them of their home. The Sacramento Delta and its surrounding farmlands are iconic of the region and is what you see as your plane flies into the state’s capital city. Ironically, shortly after the artwork was completed, the family moved back to Sacramento, and the artwork currently resides here in its home town.",
       theme: "aerial",
       pathName: "/River_Bend_600w.jpg",
@@ -1562,6 +1608,7 @@ export const artData = {
     },
     {
       title: "Sentinel",
+      slug: "sentinel",
       description: "This was commissioned as public art by the City of San Francisco. It is installed in the new Office of the Chief Medical Examiner. The salt marshes of India Basin, just beyond this building, are among the most productive ecosystems on earth - alive and active - a stark contrast to this building that focuses on death. But the salt marshes are also a place of transitions - from ocean to land, fresh to salt - and always changing with the tide. The grasses, birds and sky reflect in the shallow waters. This building echoes that changing environment in that it is also a place of transition and reflection.  Over it all, the Heron stands regal and tall, looking to the distance, taking the long view, bearing witness, still and watchful, offering a sense of peace and protection.",
       theme: "coastal",
       pathName: "/The_Sentinel_600w.jpg",
@@ -1599,6 +1646,7 @@ export const artData = {
     },
     {
       title: "Sierra Redwoods",
+      slug: "sierra-redwoods",
       description: "This piece was commissioned by a private collector and depicts \"The Bachelor and Three Graces\", iconic sequoias in Yosemite's Mariposa Grove.",
       theme: "trees",
       pathName: "/Sierra_Redwoods.jpg",
@@ -1636,6 +1684,7 @@ export const artData = {
     },
     {
       title: "Sierra Stream 1",
+      slug: "sierra-stream-1",
       description: "Location - Whole Foods Corporate Headquarters, Emeryville CA The three collages, Sierra Stream 1, 2 and 3  were commissioned by Wareham Development for a corporate entry lobby.  It is part of a transit-oriented development in the San Francisco Bay Area.",
       theme: "rocks-and-water",
       pathName: "/Sierra_Stream_1_600w.jpg",
@@ -1670,6 +1719,7 @@ export const artData = {
     },
     {
       title: "Sierra Stream 2",
+      slug: "sierra-stream-2",
       description: "Location - Whole Foods Corporate Headquarters, Emeryville CA The three collages, Sierra Stream 1, 2 and 3  were commissioned by Wareham Development for a corporate entry lobby.  It is part of a transit-oriented development in the San Francisco Bay Area.",
       theme: "rocks-and-water",
       pathName: "/Sierra_Stream_2_600w.jpg",
@@ -1704,6 +1754,7 @@ export const artData = {
     },
     {
       title: "Sierra Stream 3",
+      slug: "sierra-stream-3",
       description: "Location - Whole Foods Corporate Headquarters, Emeryville CA The three collages, Sierra Stream 1, 2 and 3  were commissioned by Wareham Development for a corporate entry lobby.  It is part of a transit-oriented development in the San Francisco Bay Area.",
       theme: "rocks-and-water",
       pathName: "/Sierra_Stream_3_600w.jpg",
@@ -1739,6 +1790,7 @@ export const artData = {
     },
     {
       title: "Sierra Water",
+      slug: "sierra-water",
       description: "Commissioned for a new Ritz Carlton hotel near Lake Tahoe, this collage captures the majestic trees and rocks of the local environments, reflected in the gorgeous Sierra waters.",
       theme: "rocks-and-water",
       pathName: "/Sierra_Water_600w.jpg",
@@ -1777,6 +1829,7 @@ export const artData = {
     },
     {
       title: "Sonora Stone",
+      slug: "sonora-stone",
       description: "For this piece I worked from a photo taken by the client. I subsequently created a second collage of a photo I took of the same subject (Sonora Stone 2).",
       theme: "hills-and-mountains",
       pathName: "/Sonora_Stone_600w.jpg",
@@ -1813,6 +1866,7 @@ export const artData = {
     },
     {
       title: "Sonora Stone 2",
+      slug: "sonora-stone-2",
       description: "This is the second collage based on this particular rock formation (Sonora Stone).  It was created as “studio work” and now resides in a private collection.",
       theme: "hills-and-mountains",
       pathName: "/Sonora_Stone_2_600w.jpg",
@@ -1847,6 +1901,7 @@ export const artData = {
     },
     {
       title: "Stanislaus River",
+      slug: "stanislaus-river",
       description: "This piece was commissioned by Kaiser Permanented for a hospital in Merced, located near the Stanislaus River",
       theme: "rocks-and-water",
       pathName: "/Stanislaus_River_600w.jpg",
@@ -1881,6 +1936,7 @@ export const artData = {
     },
     {
       title: "Tree Part 1",
+      slug: "tree-part-1",
       description: "This is one of a five-piece series, commissioned as public art for the City Hall in Sacramento, California (known as the “City of Trees”). Individual tree parts are linked vertically through the building, with the roots on the first floor, (Tree Part 1), and the leaf canopy on the top floor (Tree Part 5). Each collage depicts a different species, focusing on the importance of diversity in our urban forests and in our community.",
       theme: "trees",
       pathName: "/Tree_Part_1_600w.jpg",
@@ -1915,6 +1971,7 @@ export const artData = {
     },
     {
       title: "Tree Part 2",
+      slug: "tree-part-2",
       description: "This is one of a five-piece series, commissioned as public art for the City Hall in Sacramento, California (known as the “City of Trees”). Individual tree parts are linked vertically through the building, with the roots on the first floor, (Tree Part 1), and the leaf canopy on the top floor (Tree Part 5). Each collage depicts a different species, focusing on the importance of diversity in our urban forests and in our community.",
       theme: "trees",
       pathName: "/Tree_Part_2_600w.jpg",
@@ -1949,6 +2006,7 @@ export const artData = {
     },
     {
       title: "Tree Part 3",
+      slug: "tree-part-3",
       description: "This is one of a five-piece series, commissioned as public art for the City Hall in Sacramento, California (known as the “City of Trees”). Individual tree parts are linked vertically through the building, with the roots on the first floor, (Tree Part 1), and the leaf canopy on the top floor (Tree Part 5). Each collage depicts a different species, focusing on the importance of diversity in our urban forests and in our community.",
       theme: "trees",
       pathName: "/Tree_Part_3_600w.jpg",
@@ -1983,6 +2041,7 @@ export const artData = {
     },
     {
       title: "Tree Part 4",
+      slug: "tree-part-4",
       description: "This is one of a five-piece series, commissioned as public art for the City Hall in Sacramento, California (known as the “City of Trees”). Individual tree parts are linked vertically through the building, with the roots on the first floor, (Tree Part 1), and the leaf canopy on the top floor (Tree Part 5). Each collage depicts a different species, focusing on the importance of diversity in our urban forests and in our community.",
       theme: "trees",
       pathName: "/Tree_Part_4_600w.jpg",
@@ -2017,6 +2076,7 @@ export const artData = {
     },
     {
       title: "Tree Part 5",
+      slug: "tree-part-5",
       description: "This is one of a five-piece series, commissioned as public art for the City Hall in Sacramento, California (known as the “City of Trees”). Individual tree parts are linked vertically through the building, with the roots on the first floor, (Tree Part 1), and the leaf canopy on the top floor (Tree Part 5). Each collage depicts a different species, focusing on the importance of diversity in our urban forests and in our community.",
       theme: "trees",
       pathName: "/Tree_Part_5_600w.jpg",
@@ -2052,6 +2112,7 @@ export const artData = {
     },
     {
       title: "Tuolumne River",
+      slug: "tuolumne-river",
       description: "Original hangs in the conference room at Runyon, Saltzman, and Einhorn.",
       theme: "rocks-and-water",
       pathName: "/Tuolumne_River_600w.jpg",
@@ -2086,6 +2147,7 @@ export const artData = {
     },
     {
       title: "Verdant",
+      slug: "verdant",
       description: "This collage was a private commission.  The original is located in the home’s living room.",
       theme: "rocks-and-water",
       pathName: "/Verdant600w.jpg",
@@ -2120,6 +2182,7 @@ export const artData = {
     },
     {
       title: "Weave",
+      slug: "weave",
       description: "This was studio work and is one of the artist's very few truly abstract pieces. It is currently part of a private collection.",
       theme: "other-works",
       pathName: "/Weave600w.jpg",
@@ -2154,6 +2217,7 @@ export const artData = {
     },
     {
       title: "Yuba River",
+      slug: "yuba-river",
       description: "This was a private commission for an executive office in the Cal EPA building. Since retiring, this executive has moved the piece to their home.",
       theme: "rocks-and-water",
       pathName: "/Yuba_River_600w.jpg",
@@ -2188,6 +2252,7 @@ export const artData = {
     },
     {
       title: "Yuba River 2",
+      slug: "yuba-river-2",
       description: "This is studio work, focusing on the meeting of rocks and water. Because of the small size of this original, the threads and textures are unusually apparent.",
       theme: "rocks-and-water",
       pathName: "/Yuba_River_2_600w.jpg",
@@ -2233,28 +2298,64 @@ export const COLLECTION_NAMES = [
   "other-works"
 ] as const;
 
-export const getThemeImages = () => {
-  return artData.items.filter(item => item.isThemeImage);
+export type CollectionName = typeof COLLECTION_NAMES[number];
+
+export interface PrintSizeOption {
+  size: string;
+  priceId: string;
+  price: number;
 }
 
-export const getCollection = (collectionName: string) => {
-  return artData.items.filter(item => item.theme === collectionName);
+export interface ECommData {
+  small: PrintSizeOption;
+  medium: PrintSizeOption;
+  large: PrintSizeOption;
+  xLarge: PrintSizeOption;
 }
 
 export interface CollectionItem {
-  title: string,
-  description: string,
-  theme: string,
-  pathName: string,
-  mobilePathName?: string,
-  size: string,
-  orientation: string,
-  collectionOrder: number,
-  detail: string,
-  status: string,
-  eCommData: object,
+  title: string;
+  slug: string;
+  description: string;
+  theme: string;
+  pathName: string;
+  mobilePathName?: string;
+  size: string;
+  orientation: string;
+  collectionOrder: number;
+  detail: string;
+  status: string;
+  eCommData: ECommData;
+  isThemeImage?: boolean;
+  isDesktopThemeImage?: boolean;
+  themeOrder?: number;
+  themeName?: string;
+  themeText?: string;
+}
+
+export const getThemeImages = (): CollectionItem[] => {
+  return (artData.items as CollectionItem[]).filter(item => item.isThemeImage);
+}
+
+export const getCollection = (collectionName: string): CollectionItem[] => {
+  return (artData.items as CollectionItem[]).filter(item => item.theme === collectionName);
 }
 
 export const getItem = (title: string): CollectionItem | undefined => {
-  return artData.items.find(item => item.title === title);
+  return (artData.items as CollectionItem[]).find(item => item.title === title);
+}
+
+export const getItemBySlug = (slug: string): CollectionItem | undefined => {
+  return (artData.items as CollectionItem[]).find(item => item.slug === slug);
+}
+
+export const getCollectionItemSlugs = (collectionName: string): string[] => {
+  return getCollection(collectionName).map(item => item.slug);
+}
+
+export const getAllSlugs = (): { collectionName: string; slug: string }[] => {
+  return (artData.items as CollectionItem[]).map(item => ({
+    collectionName: item.theme,
+    slug: item.slug,
+  }));
 }

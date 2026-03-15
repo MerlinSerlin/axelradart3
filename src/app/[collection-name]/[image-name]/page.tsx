@@ -1,12 +1,9 @@
-'use client'
-
-import { Button } from "@/components/ui/button";
-import ArtworkTabs from "@/components/ui/artwork-tabs";
-import { getItem } from "@/data/art-data";
-import { CardFooter } from "@/components/ui/card";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Link from "next/link";
-import { useParams } from 'next/navigation';
-import { useCart } from '@/contexts/cart-context';
+import { getItemBySlug, getItem, getAllSlugs } from "@/data/art-data";
+import { formatCollectionName, capitalizeFirstLetterOfEachWord } from "@/lib/formatting";
+import ArtworkDetail from "./artwork-detail";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -16,69 +13,51 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-export default function Page() {
-  const { openCartManagementModal } = useCart()
+interface PageProps {
+  params: Promise<{ "collection-name": string; "image-name": string }>;
+}
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+function resolveImageData(slug: string) {
+  // Try slug-based lookup first
+  const bySlug = getItemBySlug(slug);
+  if (bySlug) return bySlug;
 
-  function capitalizeFirstLetterOfEachWord(input: string): string {
-    return input
-      .split(' ')                      // Split the string into an array of words
-      .map(word => {
-        // Check if the word starts with '(' and capitalize the letter after it
-        if (word.startsWith('(')) {
-          return '(' + word.charAt(1).toUpperCase() + word.slice(2);
-        }
-        // Handle Roman numerals
-        if (word.toLowerCase() === 'ii') {
-          return 'II';
-        }
-        if (word.toLowerCase() === 'iii') {
-          return 'III';
-        }
-        if (word.toLowerCase() === 'iv') {
-          return 'IV';
-        }
-        // Otherwise, capitalize the first letter as usual
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      .join(' ');                      // Join the array of words back into a single string
+  // Fallback: reverse-engineer title from URL for backward compatibility
+  const formattedName = slug.replace(/-/g, ' ');
+  const titleGuess = capitalizeFirstLetterOfEachWord(formattedName);
+  return getItem(titleGuess);
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { "image-name": imageName } = await params;
+  const imageData = resolveImageData(imageName);
+
+  if (!imageData) {
+    return { title: "Artwork Not Found" };
   }
 
-  const imageName = useParams()['image-name'].toString();
-  const collectionName = useParams()['collection-name'].toString();
-  const formattedImageName = imageName.replace(/-/g, ' ');
-  const finalTitleForLookup = capitalizeFirstLetterOfEachWord(formattedImageName);
+  return {
+    title: imageData.title,
+    description: imageData.description,
+  };
+}
 
-  const formatCollectionName = (name: string) => {
-    return name.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+export function generateStaticParams() {
+  return getAllSlugs().map(({ collectionName, slug }) => ({
+    "collection-name": collectionName,
+    "image-name": slug,
+  }));
+}
+
+export default async function Page({ params }: PageProps) {
+  const { "image-name": imageName, "collection-name": collectionName } = await params;
+  const imageData = resolveImageData(imageName);
+
+  if (!imageData) {
+    notFound();
   }
 
-  const imageData = getItem(finalTitleForLookup);
-
-  if (!imageData) { 
-    return (
-      <div className="w-full min-h-screen p-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-8">
-            <h1 className="text-2xl font-bold mb-2 text-red-600">Image not found</h1>
-            <p>Looking for: &ldquo;{finalTitleForLookup}&rdquo;</p>
-            <p>URL: {imageName}</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  const { title, description, size, pathName, eCommData } = imageData;
-
-  const handleBuyPrintsClick = () => {
-    if (eCommData) {
-      openCartManagementModal(title, pathName, eCommData)
-    }
-  }
+  const { title } = imageData;
 
   return (
     <div className="w-full min-h-screen pt-2 pb-6 md:py-6 bg-black">
@@ -105,24 +84,7 @@ export default function Page() {
           </Breadcrumb>
         </div>
 
-        <ArtworkTabs
-          title={title}
-          description={description}
-          size={size}
-          src={`/art-images${pathName}`}
-          pathName={pathName}
-          eCommData={eCommData}
-        />
-        
-        <CardFooter className="pt-3 mt-3 rounded-lg border bg-card text-card-foreground shadow-sm lg:hidden">
-          <Button
-            className="w-full"
-            onClick={handleBuyPrintsClick}
-            disabled={!eCommData}
-          >
-            Buy Prints
-          </Button>
-        </CardFooter>
+        <ArtworkDetail imageData={imageData} />
       </div>
     </div>
   );
