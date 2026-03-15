@@ -118,7 +118,7 @@ export default function ImageWithZoom({
   return (
     <div className={cn("relative", className)}>
       <div
-        className="relative w-full h-[40vh] sm:h-[50vh] lg:min-h-[75vh] lg:max-h-[90vh] overflow-hidden rounded-md border bg-black md:cursor-crosshair"
+        className="relative w-full h-[50vh] lg:min-h-[75vh] lg:max-h-[90vh] overflow-hidden rounded-md border bg-black md:cursor-crosshair"
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
