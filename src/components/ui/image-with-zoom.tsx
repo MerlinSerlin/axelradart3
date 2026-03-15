@@ -202,18 +202,19 @@ export default function ImageWithZoom({
       {isZoomOpen && (
         <div
           ref={overlayRef}
-          className="fixed inset-0 z-50 bg-black"
+          className="fixed inset-0 z-50 bg-black select-none"
           onTouchStart={handleOverlayTouchStart}
           onTouchMove={handleOverlayTouchMove}
           onTouchEnd={handleOverlayTouchEnd}
           onContextMenu={(e) => e.preventDefault()}
-          style={{ touchAction: 'none', WebkitTouchCallout: 'none', userSelect: 'none' }}
+          style={{ touchAction: 'none', WebkitTouchCallout: 'none', WebkitUserSelect: 'none' } as React.CSSProperties}
         >
           <Button
             variant="ghost"
             size="icon"
             onClick={closeZoom}
-            className="absolute top-4 right-4 z-50 h-10 w-10 bg-black/50 hover:bg-black/70 text-white"
+            className="absolute top-4 right-4 z-50 h-10 w-10 bg-black/50 hover:bg-black/70 text-white select-none"
+            style={{ WebkitTouchCallout: 'none' } as React.CSSProperties}
           >
             <X className="h-5 w-5" />
           </Button>
