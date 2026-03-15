@@ -239,8 +239,9 @@ export default function ImageWithZoom({
               src={src}
               fill
               alt={`${alt} - fullscreen`}
-              className="object-contain"
+              className="object-contain pointer-events-none select-none"
               sizes="100vw"
+              draggable={false}
             />
           </div>
           {magnifier.active && (
