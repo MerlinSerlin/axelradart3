@@ -14,7 +14,8 @@ import { useMobileMenuStore } from "@/store/mobile-menu";
 import MobileNavigationMenuItems from "./mobile-navigation-menu-items";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { Suspense, useEffect } from "react";
-import { COLLECTION_NAMES } from "@/data/art-data";
+import { COLLECTION_NAMES, getItemBySlug } from "@/data/art-data";
+import { formatCollectionName } from "@/lib/formatting";
 
 function MobileNavigationMenuContent() {
     const { isMenuOpen, setMenu, openDrawer, openMenu, shouldOpenDrawerOnHome, setShouldOpenDrawerOnHome } = useMobileMenuStore();
@@ -71,13 +72,27 @@ function MobileNavigationMenuContent() {
 
     const backAction = getBackAction();
     const shouldShowBackArrow = backAction !== null;
-  
+
+    // Build breadcrumb text for the mobile header
+    const getBreadcrumbText = () => {
+        if (!isCollectionPage) return null;
+        const collectionDisplay = formatCollectionName(collectionName);
+        if (isIndividualPiece) {
+            const item = getItemBySlug(pieceName);
+            const pieceTitle = item?.title ?? pieceName;
+            return `${collectionDisplay} / ${pieceTitle}`;
+        }
+        return collectionDisplay;
+    };
+
+    const breadcrumbText = getBreadcrumbText();
+
     return (
-      <>
+      <div className="flex items-center gap-2 min-w-0">
         {shouldShowBackArrow ? (
           <Button
             onClick={backAction}
-            className="p-0 bg-transparent hover:bg-transparent"
+            className="h-10 w-10 flex-shrink-0 p-0 bg-transparent hover:bg-transparent"
             variant="ghost"
           >
             <ArrowLeft color="white" size={24} />
@@ -86,9 +101,9 @@ function MobileNavigationMenuContent() {
           <Drawer open={isMenuOpen} onOpenChange={setMenu} direction="left">
             <DrawerTrigger asChild>
               <Button
-                className="p-0 bg-transparent hover:bg-transparent focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 ring-offset-transparent"
+                className="h-10 w-10 flex-shrink-0 p-0 bg-transparent hover:bg-transparent focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 ring-offset-transparent"
                 variant="ghost"
-                style={{ 
+                style={{
                   WebkitTapHighlightColor: 'transparent',
                   outline: 'none'
                 }}
@@ -110,8 +125,8 @@ function MobileNavigationMenuContent() {
               </DrawerHeader>
 
               <div className="fixed max-w-80 w-screen flex flex-col">
-                <div 
-                  className="rounded-md border text-xl pl-3 p-3" 
+                <div
+                  className="rounded-md border text-xl pl-3 p-3"
                 >
                   <MobileDrawer />
                 </div>
@@ -120,7 +135,12 @@ function MobileNavigationMenuContent() {
             </DrawerContent>
           </Drawer>
         )}
-      </>
+        {breadcrumbText && (
+          <span className="truncate text-sm text-muted-foreground">
+            {breadcrumbText}
+          </span>
+        )}
+      </div>
     );
 }
 

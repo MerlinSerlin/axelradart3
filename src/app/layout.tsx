@@ -6,6 +6,7 @@ import { Overlays } from "@/components/main-menu/overlays/overlays";
 import { CartProvider } from "@/contexts/cart-context";
 import ManageCartModal from "@/components/cart/manage-cart-modal";
 import AddToCartModal from "@/components/cart/add-to-cart-modal";
+import { MobileCartButton } from "@/components/main-menu/mobile/mobile-cart-button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({
           </div>
           <ManageCartModal />
           <AddToCartModal />
+          <MobileCartButton />
         </CartProvider>
         </body>
     </html>

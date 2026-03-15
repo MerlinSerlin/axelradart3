@@ -39,8 +39,8 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div className="w-full min-h-screen" style={{overscrollBehaviorY: 'contain', touchAction: 'pan-y', WebkitOverflowScrolling: 'touch'}}>
-      <div className="max-w-6xl mx-auto px-8 pt-2 pb-8 md:py-8">
-        <div className="mb-4 md:mb-6">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 pt-2 pb-8 md:py-8">
+        <div className="hidden md:block md:mb-6">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
