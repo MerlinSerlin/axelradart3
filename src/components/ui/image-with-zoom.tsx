@@ -239,7 +239,7 @@ export default function ImageWithZoom({
               className="absolute w-48 h-48 rounded-full border-2 border-white/50 overflow-hidden pointer-events-none z-50 shadow-lg"
               style={{
                 left: magnifier.x - 96,
-                top: magnifier.y - 96,
+                top: magnifier.y - 96 - 120,
               }}
             >
               <div
