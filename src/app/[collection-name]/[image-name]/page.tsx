@@ -61,8 +61,8 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div className="w-full min-h-screen pt-2 pb-6 md:py-6 bg-black">
-      <div className="max-w-6xl mx-auto px-8">
-        <div className="mb-4 md:mb-6">
+      <div className="max-w-6xl mx-auto px-4 md:px-8">
+        <div className="hidden md:block md:mb-6">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
