@@ -16,7 +16,7 @@ function ImageCard({ image, onClick }: { image: CollectionItem; onClick: () => v
       className="relative cursor-pointer hover:opacity-90 transition-opacity"
       onClick={onClick}
     >
-      <div className="relative w-full h-[50vh] rounded-md border bg-black overflow-hidden">
+      <div className="relative w-full h-[35vh] sm:h-[50vh] rounded-md border bg-black overflow-hidden">
         {isLoading && (
           <Skeleton className="absolute inset-0 h-full w-full" />
         )}
@@ -61,7 +61,7 @@ export default function CollectionContent({
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
         {collectionImages.map((image, index) => (
           <ImageCard
             key={index}
