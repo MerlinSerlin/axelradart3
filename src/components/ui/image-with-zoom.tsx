@@ -49,7 +49,7 @@ export default function ImageWithZoom({
   const isPanningRef = useRef(false)
 
   // Long-press magnifier state
-  const [magnifier, setMagnifier] = useState<{ active: boolean; x: number; y: number; pctX: number; pctY: number }>({ active: false, x: 0, y: 0, pctX: 0, pctY: 0 })
+  const [magnifier, setMagnifier] = useState<{ active: boolean; x: number; y: number }>({ active: false, x: 0, y: 0 })
   const longPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
 
@@ -82,16 +82,6 @@ export default function ImageWithZoom({
     lastTapRef.current = now
   }, [])
 
-  const getTouchPct = useCallback((clientX: number, clientY: number) => {
-    const el = overlayRef.current
-    if (!el) return { pctX: 50, pctY: 50 }
-    const rect = el.getBoundingClientRect()
-    return {
-      pctX: ((clientX - rect.left) / rect.width) * 100,
-      pctY: ((clientY - rect.top) / rect.height) * 100,
-    }
-  }, [])
-
   const clearLongPress = useCallback(() => {
     if (longPressTimerRef.current) {
       clearTimeout(longPressTimerRef.current)
@@ -113,14 +103,13 @@ export default function ImageWithZoom({
       isPanningRef.current = true
 
       // Start long-press timer
-      const { pctX, pctY } = getTouchPct(touch.clientX, touch.clientY)
       clearLongPress()
       longPressTimerRef.current = setTimeout(() => {
         isPanningRef.current = false
-        setMagnifier({ active: true, x: touch.clientX, y: touch.clientY, pctX, pctY })
+        setMagnifier({ active: true, x: touch.clientX, y: touch.clientY })
       }, 400)
     }
-  }, [scale, translate, getTouchPct, clearLongPress])
+  }, [scale, translate, clearLongPress])
 
   const handleOverlayTouchMove = useCallback((e: React.TouchEvent) => {
     e.preventDefault()
@@ -138,8 +127,7 @@ export default function ImageWithZoom({
 
       if (magnifier.active) {
         // Move magnifier with finger
-        const { pctX, pctY } = getTouchPct(touch.clientX, touch.clientY)
-        setMagnifier({ active: true, x: touch.clientX, y: touch.clientY, pctX, pctY })
+        setMagnifier({ active: true, x: touch.clientX, y: touch.clientY })
       } else if (isPanningRef.current && scale > 1) {
         // Cancel long-press if finger moved significantly
         if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
@@ -151,7 +139,7 @@ export default function ImageWithZoom({
         })
       }
     }
-  }, [scale, magnifier.active, getTouchPct, clearLongPress])
+  }, [scale, magnifier.active, clearLongPress])
 
   const handleOverlayTouchEnd = useCallback((e: React.TouchEvent) => {
     clearLongPress()
@@ -242,6 +230,7 @@ export default function ImageWithZoom({
               className="object-contain pointer-events-none select-none"
               sizes="100vw"
               draggable={false}
+              style={{ WebkitTouchCallout: 'none' } as React.CSSProperties}
             />
           </div>
           {magnifier.active && (
@@ -252,16 +241,26 @@ export default function ImageWithZoom({
                 top: magnifier.y - 96,
               }}
             >
-              <Image
-                src={src}
-                fill
-                alt=""
+              <div
                 style={{
-                  objectFit: 'cover',
+                  position: 'absolute',
+                  width: window.innerWidth,
+                  height: window.innerHeight,
+                  left: -(magnifier.x * zoomScale) + 96,
+                  top: -(magnifier.y * zoomScale) + 96,
                   transform: `scale(${zoomScale})`,
-                  transformOrigin: `${magnifier.pctX}% ${magnifier.pctY}%`,
+                  transformOrigin: '0 0',
                 }}
-              />
+              >
+                <Image
+                  src={src}
+                  fill
+                  alt=""
+                  className="object-contain"
+                  sizes="100vw"
+                  style={{ WebkitTouchCallout: 'none' } as React.CSSProperties}
+                />
+              </div>
             </div>
           )}
         </div>
