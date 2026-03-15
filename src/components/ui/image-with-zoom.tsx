@@ -218,7 +218,8 @@ export default function ImageWithZoom({
           onTouchStart={handleOverlayTouchStart}
           onTouchMove={handleOverlayTouchMove}
           onTouchEnd={handleOverlayTouchEnd}
-          style={{ touchAction: 'none' }}
+          onContextMenu={(e) => e.preventDefault()}
+          style={{ touchAction: 'none', WebkitTouchCallout: 'none', userSelect: 'none' }}
         >
           <Button
             variant="ghost"
