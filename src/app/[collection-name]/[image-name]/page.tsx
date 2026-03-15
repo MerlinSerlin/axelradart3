@@ -60,7 +60,7 @@ export default async function Page({ params }: PageProps) {
   const { title } = imageData;
 
   return (
-    <div className="w-full min-h-screen pt-2 pb-6 md:py-6 bg-black">
+    <div className="w-full pt-2 pb-6 md:py-6 bg-black">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <div className="hidden md:block md:mb-6">
           <Breadcrumb>

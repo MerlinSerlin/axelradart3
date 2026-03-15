@@ -38,7 +38,7 @@ export default async function Page({ params }: PageProps) {
   const displayName = formatCollectionName(collectionName);
 
   return (
-    <div className="w-full min-h-screen" style={{overscrollBehaviorY: 'contain', touchAction: 'pan-y', WebkitOverflowScrolling: 'touch'}}>
+    <div className="w-full">
       <div className="max-w-6xl mx-auto px-4 md:px-8 pt-2 pb-8 md:py-8">
         <div className="hidden md:block md:mb-6">
           <Breadcrumb>
