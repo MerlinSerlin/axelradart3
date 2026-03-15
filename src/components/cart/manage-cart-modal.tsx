@@ -58,7 +58,7 @@ export default function ManageCartModal() {
                       variant="ghost"
                       size="icon"
                       onClick={() => removeItem(item.id)}
-                      className="h-8 w-8 text-muted-foreground hover:text-destructive"
+                      className="h-10 w-10 text-muted-foreground hover:text-destructive"
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
@@ -68,18 +68,18 @@ export default function ManageCartModal() {
                         variant="outline"
                         size="icon"
                         onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
-                        className="h-8 w-8"
+                        className="h-10 w-10"
                       >
-                        <Minus className="h-3 w-3" />
+                        <Minus className="h-4 w-4" />
                       </Button>
                       <span className="w-8 text-center">{item.quantity}</span>
                       <Button
                         variant="outline"
                         size="icon"
                         onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
-                        className="h-8 w-8"
+                        className="h-10 w-10"
                       >
-                        <Plus className="h-3 w-3" />
+                        <Plus className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>

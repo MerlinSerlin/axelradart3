@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, lazy, Suspense } from "react"
+import { useState, lazy, Suspense } from "react"
 import { cn } from "@/lib/utils"
 import { Eye } from "lucide-react"
 import ImageWithZoom from "@/components/ui/image-with-zoom"
@@ -11,7 +11,7 @@ import type { ECommData } from "@/data/art-data"
 
 const RoomView = lazy(() => import("@/components/ui/room-view"))
 
-type TabType = 'artwork' | 'room' | 'details'
+type TabType = 'artwork' | 'room'
 
 export interface ArtworkTabsProps {
   title: string
@@ -41,7 +41,6 @@ export default function ArtworkTabs({ title, description, size, src, pathName, e
 
   const tabs = [
     { id: 'artwork' as TabType, label: 'Artwork' },
-    { id: 'details' as TabType, label: 'Details', hideOnDesktop: true },
     {
       id: 'room' as TabType,
       label: 'View In Room',
@@ -54,82 +53,42 @@ export default function ArtworkTabs({ title, description, size, src, pathName, e
   return (
     <div className={cn("w-full", className)}>
       <div className="flex border-b border-gray-200 mb-6">
-        {tabs.map((tab) => {
-          if (tab.hideOnDesktop) {
-            return (
-              <button
-                key={tab.id}
-                disabled={tab.disabled}
-                onClick={() => {
-                  if (tab.disabled) return;
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            disabled={tab.disabled}
+            onClick={() => {
+              if (tab.disabled) return;
 
-                  if (onViewChange) {
-                    onViewChange(tab.id);
-                  } else {
-                    // Original behavior when no onViewChange provided
-                    if (tab.id === 'room') {
-                      setShowFullScreenRoom(true)
-                    } else {
-                      setActiveTab(tab.id)
-                      setShowFullScreenRoom(false)
-                    }
-                  }
-                }}
-                className={cn(
-                  "px-6 py-3 text-sm font-medium border-b-2 transition-colors lg:hidden",
-                  tab.disabled
-                    ? "border-transparent text-gray-400 cursor-not-allowed opacity-50"
-                    : activeTab === tab.id
-                    ? "border-blue-500 text-blue-600"
-                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                )}
-              >
-                <div className="flex items-center gap-2">
-                  {tab.label}
-                  {tab.icon}
-                </div>
-              </button>
-            )
-          }
-
-          return (
-            <button
-              key={tab.id}
-              disabled={tab.disabled}
-              onClick={() => {
-                if (tab.disabled) return;
-
-                if (onViewChange) {
-                  onViewChange(tab.id);
+              if (onViewChange) {
+                onViewChange(tab.id);
+              } else {
+                if (tab.id === 'room') {
+                  setShowFullScreenRoom(true)
                 } else {
-                  // Original behavior when no onViewChange provided
-                  if (tab.id === 'room') {
-                    setShowFullScreenRoom(true)
-                  } else {
-                    setActiveTab(tab.id)
-                    setShowFullScreenRoom(false)
-                  }
+                  setActiveTab(tab.id)
+                  setShowFullScreenRoom(false)
                 }
-              }}
-              className={cn(
-                "px-6 py-3 text-sm font-medium border-b-2 transition-colors",
-                tab.disabled
-                  ? "border-transparent text-gray-400 cursor-not-allowed opacity-50"
-                  : activeTab === tab.id
-                  ? "border-blue-500 text-blue-600"
-                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-              )}
-            >
-              <div className="flex items-center gap-2">
-                {tab.label}
-                {tab.icon}
-              </div>
-            </button>
-          )
-        })}
+              }
+            }}
+            className={cn(
+              "px-6 py-3 text-sm font-medium border-b-2 transition-colors",
+              tab.disabled
+                ? "border-transparent text-gray-400 cursor-not-allowed opacity-50"
+                : activeTab === tab.id
+                ? "border-blue-500 text-blue-600"
+                : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+            )}
+          >
+            <div className="flex items-center gap-2">
+              {tab.label}
+              {tab.icon}
+            </div>
+          </button>
+        ))}
       </div>
 
-      <div className="min-h-[500px]">
+      <div className="lg:min-h-[500px]">
         {activeTab === 'artwork' && (
           <div className="flex flex-col lg:flex-row gap-6">
             <div className="flex-1 min-h-[400px]">
@@ -138,6 +97,19 @@ export default function ArtworkTabs({ title, description, size, src, pathName, e
                 alt={title}
               />
             </div>
+            {/* Mobile: inline details below image */}
+            <div className="lg:hidden space-y-3">
+              <div>
+                <p className="text-muted-foreground leading-relaxed">{description}</p>
+              </div>
+              <div>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>Dimensions: {size}</li>
+                  <li>Medium: Mixed media collage</li>
+                </ul>
+              </div>
+            </div>
+            {/* Desktop: sidebar card */}
             <div className="hidden lg:block lg:w-80 flex-shrink-0">
               <Card className="bg-black border-gray-700 h-full">
                 <CardContent className="space-y-4 p-6">
@@ -170,7 +142,7 @@ export default function ArtworkTabs({ title, description, size, src, pathName, e
 
         {showFullScreenRoom && (
           <Suspense fallback={null}>
-            <RoomView 
+            <RoomView
               artworkSrc={src}
               artworkAlt={title}
               size={size}
@@ -180,25 +152,6 @@ export default function ArtworkTabs({ title, description, size, src, pathName, e
               }}
             />
           </Suspense>
-        )}
-
-        {activeTab === 'details' && (
-          <Card className="bg-black border-gray-700">
-            <CardContent className="space-y-4">
-              <div>
-                <h3 className="font-semibold mb-2 text-white">Description</h3>
-                <p className="text-muted-foreground leading-relaxed">{description}</p>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2 text-white">Specifications</h3>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>Dimensions: {size}</li>
-                  <li>Medium: Mixed media collage</li>
-                  <li>Frame: Available separately</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
         )}
       </div>
     </div>
