@@ -2,7 +2,7 @@
 
 import { useState, lazy, Suspense } from "react"
 import { cn } from "@/lib/utils"
-import { Eye } from "lucide-react"
+import { Maximize2, Eye } from "lucide-react"
 import ImageWithZoom from "@/components/ui/image-with-zoom"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -10,8 +10,6 @@ import { useCart } from "@/contexts/cart-context"
 import type { ECommData } from "@/data/art-data"
 
 const RoomView = lazy(() => import("@/components/ui/room-view"))
-
-type TabType = 'artwork' | 'room'
 
 export interface ArtworkTabsProps {
   title: string
@@ -21,16 +19,13 @@ export interface ArtworkTabsProps {
   pathName: string
   eCommData?: ECommData
   className?: string
-  activeView?: string
-  onViewChange?: (view: string) => void
 }
 
-export default function ArtworkTabs({ title, description, size, src, pathName, eCommData, className, activeView = 'artwork', onViewChange }: ArtworkTabsProps) {
-  const [activeTab, setActiveTab] = useState<TabType>('artwork')
-  const [showFullScreenRoom, setShowFullScreenRoom] = useState(false)
+export default function ArtworkTabs({ title, description, size, src, pathName, eCommData, className }: ArtworkTabsProps) {
+  const [zoomOpen, setZoomOpen] = useState(false)
+  const [showRoomView, setShowRoomView] = useState(false)
   const { openCartManagementModal } = useCart()
-  
-  // Pieces that are too big for room view
+
   const isRoomViewDisabled = title === "Butterfly Effect (Interior View)" || title === "Butterfly Effect (Exterior View)"
 
   const handleBuyPrintsClick = () => {
@@ -39,117 +34,87 @@ export default function ArtworkTabs({ title, description, size, src, pathName, e
     }
   }
 
-  const tabs = [
-    { id: 'artwork' as TabType, label: 'Artwork' },
-    {
-      id: 'room' as TabType,
-      label: 'View In Room',
-      icon: <Eye size={16} />,
-      disabled: isRoomViewDisabled
-    }
-  ]
-
-
   return (
     <div className={cn("w-full", className)}>
-      <div className="flex border-b border-gray-200 mb-6">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            disabled={tab.disabled}
-            onClick={() => {
-              if (tab.disabled) return;
-
-              if (onViewChange) {
-                onViewChange(tab.id);
-              } else {
-                if (tab.id === 'room') {
-                  setShowFullScreenRoom(true)
-                } else {
-                  setActiveTab(tab.id)
-                  setShowFullScreenRoom(false)
-                }
-              }
-            }}
-            className={cn(
-              "px-6 py-3 text-sm font-medium border-b-2 transition-colors",
-              tab.disabled
-                ? "border-transparent text-gray-400 cursor-not-allowed opacity-50"
-                : activeTab === tab.id
-                ? "border-blue-500 text-blue-600"
-                : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-            )}
-          >
-            <div className="flex items-center gap-2">
-              {tab.label}
-              {tab.icon}
-            </div>
-          </button>
-        ))}
-      </div>
-
       <div className="lg:min-h-[500px]">
-        {activeTab === 'artwork' && (
-          <div className="flex flex-col lg:flex-row gap-6">
-            <div className="flex-1 lg:min-h-[400px]">
+        <div className="flex flex-col lg:flex-row gap-6">
+          <div className="flex-1 lg:min-h-[400px]">
+            <div className="relative">
               <ImageWithZoom
                 src={src}
                 alt={title}
+                zoomOpen={zoomOpen}
+                onZoomClose={() => setZoomOpen(false)}
               />
-            </div>
-            {/* Mobile: inline details below image */}
-            <div className="lg:hidden space-y-3">
-              <div>
-                <p className="text-muted-foreground leading-relaxed">{description}</p>
+              <div className="absolute bottom-3 right-3 flex gap-2 z-10">
+                <button
+                  onClick={() => setZoomOpen(true)}
+                  className="h-9 w-9 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors"
+                  aria-label="View full image"
+                >
+                  <Maximize2 size={18} />
+                </button>
+                {!isRoomViewDisabled && (
+                  <button
+                    onClick={() => setShowRoomView(true)}
+                    className="h-9 w-9 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors"
+                    aria-label="View in room"
+                  >
+                    <Eye size={18} />
+                  </button>
+                )}
               </div>
-              <div>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>Dimensions: {size}</li>
-                  <li>Medium: Mixed media collage</li>
-                </ul>
-              </div>
-            </div>
-            {/* Desktop: sidebar card */}
-            <div className="hidden lg:block lg:w-80 flex-shrink-0">
-              <Card className="bg-black border-gray-700 h-full">
-                <CardContent className="space-y-4 p-6">
-                  <div>
-                    <h3 className="font-semibold mb-2 text-white">Description</h3>
-                    <p className="text-muted-foreground leading-relaxed">{description}</p>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-2 text-white">Specifications</h3>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>Dimensions: {size}</li>
-                      <li>Medium: Mixed media collage</li>
-                      <li>Frame: Available separately</li>
-                    </ul>
-                  </div>
-                  <div className="pt-4">
-                    <Button
-                      className="w-full"
-                      onClick={handleBuyPrintsClick}
-                      disabled={!eCommData}
-                    >
-                      Buy Prints
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </div>
-        )}
+          {/* Mobile: inline details below image */}
+          <div className="lg:hidden space-y-3">
+            <div>
+              <p className="text-muted-foreground leading-relaxed">{description}</p>
+            </div>
+            <div>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>Dimensions: {size}</li>
+                <li>Medium: Mixed media collage</li>
+              </ul>
+            </div>
+          </div>
+          {/* Desktop: sidebar card */}
+          <div className="hidden lg:block lg:w-80 flex-shrink-0">
+            <Card className="bg-black border-gray-700 h-full">
+              <CardContent className="space-y-4 p-6">
+                <div>
+                  <h3 className="font-semibold mb-2 text-white">Description</h3>
+                  <p className="text-muted-foreground leading-relaxed">{description}</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2 text-white">Specifications</h3>
+                  <ul className="text-sm text-muted-foreground space-y-1">
+                    <li>Dimensions: {size}</li>
+                    <li>Medium: Mixed media collage</li>
+                    <li>Frame: Available separately</li>
+                  </ul>
+                </div>
+                <div className="pt-4">
+                  <Button
+                    className="w-full"
+                    onClick={handleBuyPrintsClick}
+                    disabled={!eCommData}
+                  >
+                    Buy Prints
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
 
-        {showFullScreenRoom && (
+        {showRoomView && (
           <Suspense fallback={null}>
             <RoomView
               artworkSrc={src}
               artworkAlt={title}
               size={size}
-              onClose={() => {
-                setShowFullScreenRoom(false)
-                setActiveTab('artwork')
-              }}
+              onClose={() => setShowRoomView(false)}
             />
           </Suspense>
         )}

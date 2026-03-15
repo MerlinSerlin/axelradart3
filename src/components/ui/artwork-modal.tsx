@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect } from "react";
-import { useRouter, useSearchParams } from 'next/navigation';
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ArtworkTabs from "@/components/ui/artwork-tabs";
@@ -17,10 +16,6 @@ interface ArtworkModalProps {
 }
 
 export default function ArtworkModal({ imageName, collectionName, onClose }: ArtworkModalProps) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const currentView = searchParams.get('view') || 'artwork';
-
   // Try slug-based lookup first, fall back to title reverse-engineering
   const imageData = getItemBySlug(imageName)
     || getItem(capitalizeFirstLetterOfEachWord(imageName.replace(/-/g, ' ')));
@@ -40,11 +35,6 @@ export default function ArtworkModal({ imageName, collectionName, onClose }: Art
       document.body.style.overflow = 'unset';
     };
   }, [onClose]);
-
-  const handleViewChange = (view: string) => {
-    const newUrl = `/${collectionName}/${imageName}?view=${view}`;
-    router.push(newUrl, { scroll: false });
-  };
 
   if (!imageData) {
     return (
@@ -83,8 +73,6 @@ export default function ArtworkModal({ imageName, collectionName, onClose }: Art
             size={size}
             src={`/art-images${pathName}`}
             pathName={pathName}
-            activeView={currentView}
-            onViewChange={handleViewChange}
           />
           
           <CardFooter className="pt-6 mt-8 rounded-lg border bg-black text-white shadow-sm">
